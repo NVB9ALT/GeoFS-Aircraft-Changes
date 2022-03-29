@@ -59,15 +59,3 @@ function checkAircraftTypeAndSpeedAndImplementMachFX() {
    }
 }
 var repeatChecks = setInterval(checkAircraftTypeAndSpeedAndImplementMachFX, 500);
-
-
-
-geofs.preferences.weather.advanced.turbulences = 5
-weather.init()
-geofs.aircraft.instance.id == 0 ||
-
-//Testing stuff below
-geofs.aircraft.Aircraft.prototype.load
-geofs.aircraft.instance.change
-geofs.aircraft.instance.engines[0].thrust
-geofs.aircraft.instance.engines[1].name
