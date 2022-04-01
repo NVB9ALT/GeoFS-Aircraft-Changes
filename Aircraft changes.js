@@ -18,8 +18,10 @@ function checkAndImplementChanges() {
       geofs.aircraft.instance.parts.engine.thrust = 12000
    }
    if (geofs.aircraft.instance.id == 7){
-	   //Realism and powah
+	   //F16 gets the latest Block 70 engine
+		//Working on getting AoA based flaps animations to improve realism and maneuverability
 	   geofs.aircraft.instance.engine.afterBurnerThrust = 145000
+      geofs.aircraft.instance.engine.thrust = 77500
    }
 	if (geofs.aircraft.instance.id == 6){
 	   //This makes sure the Twin Otter is one of the more powerful versions
