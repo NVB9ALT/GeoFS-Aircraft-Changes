@@ -19,7 +19,7 @@ function checkAndImplementChanges() {
    }
    if (geofs.aircraft.instance.id == 7){
 	   //F16 gets the latest Block 70 engine
-		//Working on getting AoA based flaps animations to improve realism and maneuverability
+		//AoA based flaps animations to improve realism and maneuverability hopefully coming soon
 	   geofs.aircraft.instance.engine.afterBurnerThrust = 145000
       geofs.aircraft.instance.engine.thrust = 77500
    }
