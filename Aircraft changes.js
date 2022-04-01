@@ -5,7 +5,7 @@ function checkAndImplementChanges() {
       geofs.aircraft.instance.definition.zeroRPMAltitude = 80000
    }
    if (geofs.aircraft.instance.id == 21){
-	   //This just turns the Zlin Z 50 into something awesome
+	   //This just turns the Zlin Z50 into something awesome
       geofs.aircraft.instance.parts.engine.thrust = 7000
    	geofs.aircraft.instance.definition.zeroRPMAltitude = 80000
       geofs.aircraft.instance.definition.reverse = true
@@ -16,6 +16,10 @@ function checkAndImplementChanges() {
    if (geofs.aircraft.instance.id == 12){
 	   //Aaaand the PC 7 gets PC 9 performance
       geofs.aircraft.instance.parts.engine.thrust = 12000
+   }
+   if (geofs.aircraft.instance.id == 7){
+	   //Realism and powah
+	   geofs.aircraft.instance.engine.afterBurnerThrust = 145000
    }
 	if (geofs.aircraft.instance.id == 6){
 	   //This makes sure the Twin Otter is one of the more powerful versions
@@ -37,7 +41,7 @@ var repeatChecks = setInterval(checkAndImplementChanges, 1000)
 function checkAircraftTypeAndSpeedAndImplementMachFX() {
    if (geofs.aircraft.instance.id == 1 || geofs.aircraft.instance.id == 2 || geofs.aircraft.instance.id == 5 || geofs.aircraft.instance.id == 6 || geofs.aircraft.instance.id == 8 || geofs.aircraft.instance.id == 11 || geofs.aircraft.instance.id == 12 || geofs.aircraft.instance.id == 13 || geofs.aircraft.instance.id == 14 || geofs.aircraft.instance.id == 15 || geofs.aircraft.instance.id == 16){ //straight wing aircraft list
 	   if (geofs.animation.values.mach > 0.675){
-		   geofs.preferences.weather.advanced.turbulences = 5
+		   geofs.preferences.weather.advanced.turbulences = 7
 		}
 		if (geofs.animation.values.mach > 0.735){
 		   geofs.preferences.weather.advanced.turbulences = 9 
@@ -48,7 +52,7 @@ function checkAircraftTypeAndSpeedAndImplementMachFX() {
 	}
 	if (geofs.aircraft.instance.id == 3 || geofs.aircraft.instance.id == 4 || geofs.aircraft.instance.id == 10){ //swept wing aircraft list
 		if (geofs.animation.values.mach > 0.8){
-		   geofs.preferences.weather.advanced.turbulences = 5
+		   geofs.preferences.weather.advanced.turbulences = 7
 		}
 		if (geofs.animation.values.mach > 0.9){
 		   geofs.preferences.weather.advanced.turbulences = 9
