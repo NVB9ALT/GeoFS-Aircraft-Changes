@@ -1,5 +1,10 @@
 //aircraft.json changes
 function checkAndImplementChanges() { 
+   if (geofs.aircraft.instance.id == 3307){
+	   //decreasing the sensitivity of the CRJ 700
+	   geofs.aircraft.instance.parts.elevatorleft.animations[0].ratio = 10
+	   geofs.aircraft.instance.parts.elevatorright.animations[0].ratio = 10
+	}
    if (geofs.aircraft.instance.id == 52){
 	   //now you can fly the Hughes Osage higher
       geofs.aircraft.instance.definition.zeroRPMAltitude = 80000
