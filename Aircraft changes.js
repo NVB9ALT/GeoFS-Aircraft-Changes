@@ -2,7 +2,7 @@
 function checkAndImplementChanges() { 
    if (geofs.aircraft.instance.id == 3307){
 	   //decreasing the sensitivity of the CRJ 700
-	if (geofs.animation.values.kias > 150){
+	if (geofs.aircraft.instance.kias > 150){
 	   geofs.aircraft.instance.parts.elevatorleft.animations[0].ratio = 10
 	   geofs.aircraft.instance.parts.elevatorright.animations[0].ratio = 10
 	   }
