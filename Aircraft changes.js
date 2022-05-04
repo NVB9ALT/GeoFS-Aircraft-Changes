@@ -33,7 +33,7 @@ function checkAndImplementChanges() {
       geofs.aircraft.instance.engines[0].thrust = 6250
 		geofs.aircraft.instance.engines[1].thrust = 6250
    }
-   if (geofs.aircraft.instance.id = 2) {
+   if (geofs.aircraft.instance.id == 2) {
 	   //C172 physics from AriakimTaiyo
 let lastTorque = 0;
 let engtorquemp = 0;
