@@ -1,5 +1,8 @@
 //aircraft.json changes
 function checkAndImplementChanges() { 
+   if (geofs.aircraft.instance.id == 2865){
+	   geofs.aircraft.instance.cameras.cockpit.position = [-0.68, 14.5, 0.33]
+   }
    if (geofs.aircraft.instance.id == 3307){
 	   //decreasing the sensitivity of the CRJ 700
 	if (geofs.animation.values.kias > 150){
