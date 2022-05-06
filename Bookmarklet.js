@@ -1,3 +1,5 @@
+//NOTE: Does not work right now
+
 javascript: (() => {
 //aircraft.json changes
 function checkAndImplementChanges() { 
