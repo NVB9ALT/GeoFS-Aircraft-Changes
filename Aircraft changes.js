@@ -1,6 +1,8 @@
 //aircraft.json changes
 function checkAndImplementChanges() { 
    if (geofs.aircraft.instance.id == 2865){
+	   //fix the A320-214 cockpit camera position problem
+	   //doesn't work rn
 	   geofs.aircraft.instance.definition.cameras.cockpit.position = [-0.68, 14.5, 0.33]
    }
    if (geofs.aircraft.instance.id == 3307){
@@ -157,7 +159,4 @@ interval = setInterval(function(){
   getControlWash();
   doForces();
 }, 100)
-}
-else {
-  throw("Switch to a compatible plane")
 }
