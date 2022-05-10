@@ -16,6 +16,13 @@ function checkAndImplementChanges() {
 	   //now you can fly the Hughes Osage higher
       geofs.aircraft.instance.definition.zeroRPMAltitude = 80000
    }
+   if (geofs.aircraft.instance.id == 26){
+	   //An-140 gets some MOAH POWAH
+       geofs.aircraft.instance.definition.engine1.thrust = 20000
+       geofs.aircraft.instance.definition.engine2.thrust = 20000
+       geofs.aircraft.instance.definition.engine1.reverseThrust = 16000
+       geofs.aircraft.instance.definition.engine2.reverseThrust = 16000
+   }
    if (geofs.aircraft.instance.id == 21){
 	   //This just turns the Zlin Z50 into something awesome
       geofs.aircraft.instance.parts.engine.thrust = 7000
