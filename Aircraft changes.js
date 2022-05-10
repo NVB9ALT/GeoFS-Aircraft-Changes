@@ -1,3 +1,4 @@
+function changeAircraft() {
 //aircraft.json changes
 function checkAndImplementChanges() { 
    if (geofs.aircraft.instance.id == 2865){
@@ -166,4 +167,5 @@ interval = setInterval(function(){
   getControlWash();
   doForces();
 }, 100)
+}
 }
