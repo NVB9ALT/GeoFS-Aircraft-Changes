@@ -19,10 +19,7 @@ function checkAndImplementChanges() {
    }
    if (geofs.aircraft.instance.id == 26){
 	   //An-140 gets some MOAH POWAH
-       geofs.aircraft.instance.definition.engine1.thrust = 20000
-       geofs.aircraft.instance.definition.engine2.thrust = 20000
-       geofs.aircraft.instance.definition.engine1.reverseThrust = 16000
-       geofs.aircraft.instance.definition.engine2.reverseThrust = 16000
+      geofs.aircraft.instance.definition.mass = 10000
    }
    if (geofs.aircraft.instance.id == 21){
 	   //This just turns the Zlin Z50 into something awesome
