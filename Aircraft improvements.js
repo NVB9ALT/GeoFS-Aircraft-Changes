@@ -93,7 +93,7 @@ let rudtorquemp = 0;
 
 //basic maths to figure out what the engine torque is, then apply it.
 function tqmaths() {
-  engtorquemp = -(lastTorque - geofs.animation.values.rpm) * 3;
+  engtorquemp = -(lastTorque - geofs.animation.values.rpm) * 5;
     geofs.aircraft.instance.rigidBody.applyTorqueImpulse([splitAxes(engtorquemp - ailtorquemp)[0] + splitAxesOffset(elevtorquemp)[0],splitAxes(engtorquemp - ailtorquemp)[1] + splitAxesOffset(elevtorquemp)[1],splitAxes(engtorquemp - ailtorquemp)[2] + splitAxesOffset(elevtorquemp)[2]])
 };
 
@@ -155,7 +155,6 @@ function groundEffect() {
 
 interval = setInterval(function(){
   groundEffect();
-  stallForces();
   getControlWash();
   doForces();
 }, 100)
