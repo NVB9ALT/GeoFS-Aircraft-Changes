@@ -1,18 +1,6 @@
 function changeAircraft() {
 //aircraft.json changes
 function checkAndImplementChanges() { 
-   if (geofs.aircraft.instance.id == 2865){
-	   //fix the A320-214 cockpit camera position problem
-	   //doesn't work rn
-	   geofs.aircraft.instance.definition.cameras.cockpit.position = [-0.68, 14.5, 0.33]
-   }
-   if (geofs.aircraft.instance.id == 3307){
-	   //decreasing the sensitivity of the CRJ 700
-	if (geofs.animation.values.kias > 150){
-	   geofs.aircraft.instance.parts.elevatorleft.animations[0].ratio = 10
-	   geofs.aircraft.instance.parts.elevatorright.animations[0].ratio = 10
-	   }
-	}
    if (geofs.aircraft.instance.id == 52){
 	   //now you can fly the Hughes Osage higher
       geofs.aircraft.instance.definition.zeroRPMAltitude = 80000
@@ -30,13 +18,18 @@ function checkAndImplementChanges() {
       geofs.aircraft.instance.parts.engine.thrust = 7500
    	geofs.aircraft.instance.parts.engine.reverseThrust = 4000
    }
+   if (geofs.aircraft.instance.id == 18){
+	//Su-35 reverse thrust
+	geofs.aircraft.instance.definition.reverse = true
+        geofs.aircraft.instance.parts.rightEngine.reverseThrust = 50000
+        geofs.aircraft.instance.parts.leftEngine.reverseThrust = 50000
+   }
    if (geofs.aircraft.instance.id == 12){
 	   //Aaaand the PC 7 gets PC 9 performance
       geofs.aircraft.instance.parts.engine.thrust = 12000
    }
    if (geofs.aircraft.instance.id == 7){
 	   //F16 gets the most powerful Block 60 engine
-		//AoA based flaps animations to improve realism and maneuverability
 	   geofs.aircraft.instance.engine.afterBurnerThrust = 145000
       geofs.aircraft.instance.engine.thrust = 77500
    }
