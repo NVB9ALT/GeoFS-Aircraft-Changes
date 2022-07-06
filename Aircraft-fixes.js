@@ -1,3 +1,4 @@
+function realismify() {
 var notifiedTrue = new Boolean(0)
 function fixAircraft() {
 if (geofs.aircraft.instance.id == 18){
@@ -182,3 +183,4 @@ console.log(engtorquemp);
 checkPropInterval = setInterval(function(){
    checkAircraft()
 }, 1000);
+}
