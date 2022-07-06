@@ -179,7 +179,6 @@ if (geofs.aircraft.instance.id != 21 || geofs.aircraft.instance.id != 2 || geofs
       aircraftChecked = 0
    }
 }
-console.log(engtorquemp);
 checkPropInterval = setInterval(function(){
    checkAircraft()
 }, 1000);
