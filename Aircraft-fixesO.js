@@ -196,6 +196,11 @@ function doForces() {
 }
 
 //stall and ground effect stuff
+function stallForces() {
+  if (geofs.animation.values.aoa > 10) {
+    geofs.aircraft.instance.rigidBody.applyTorqueImpulse([splitAxes(Math.random()*geofs.animation.values.aoa * 2)[0],splitAxes(Math.random()*geofs.animation.values.aoa * 2)[1],0])
+  }
+}
 
 function groundEffect() {
   if (geofs.animation.values.haglFeet <= 10) {
@@ -205,6 +210,7 @@ function groundEffect() {
 
 interval = setInterval(function(){
   groundEffect();
+  stallForces();
   getControlWash();
   doForces();
 }, 100)
