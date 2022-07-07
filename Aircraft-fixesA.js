@@ -1,6 +1,7 @@
 function realismify() {
 var notifiedTrue = new Boolean(0)
 function fixAircraft() {
+//Su-35 gets thrust vectoring on the yaw axis
 if (geofs.aircraft.instance.id == 18){
    geofs.aircraft.instance.definition.parts[46].animations[2] = {};
 	geofs.aircraft.instance.definition.parts[46].animations[2].type = "rotate";
@@ -45,6 +46,41 @@ if (geofs.aircraft.instance.id == 2844) {
 	geofs.aircraft.instance.definition.sounds[2].file = "https://geo-fs.com/sounds/f16/rpm2.ogg";
 	geofs.aircraft.instance.definition.parts[25].animations[0].ratio = 2.5;
 	geofs.aircraft.instance.definition.parts[25].animations[1].ratio = -2.5;
+}
+if (geofs.aircraft.instance.id == 4172) {
+   //fix power scaling with altitude
+   if (typeof geofs.aircraft.instance.definition.zeroRPMAltitude != undefined) {
+      delete geofs.aircraft.instance.definition.zeroRPMAltitude;
+	};
+	geofs.aircraft.instance.definition.zeroThrustAltitude = 80000;
+	//Adjusting lift
+	geofs.aircraft.instance.definition.parts[3].area = 10;
+	geofs.aircraft.instance.definition.parts[15].area = 10;
+   geofs.aircraft.instance.definition.parts[1].liftFactor = 5;
+	//Trying to make the speedbrakes less absurdly powerful
+	geofs.aircraft.instance.definition.parts[13].dragFactor = 5;
+	geofs.aircraft.instance.definition.parts[27].dragFactor = 5;
+	//Power refinements, adding afterburners
+	geofs.aircraft.instance.definition.parts[70].thrust = 50000;
+	geofs.aircraft.instance.definition.parts[71].thrust = 50000;
+	geofs.aircraft.instance.definition.parts[70].afterBurnerThrust = 80000;
+	geofs.aircraft.instance.definition.parts[71].afterBurnerThrust = 80000;
+	//Adjusting center of mass to prevent nose pitch-down with power
+	geofs.aircraft.instance.definition.com = [0, 0, 1.5];
+	//Making the elevons rotate the right way for roll
+	geofs.aircraft.instance.definition.parts[6].animations[0].ratio = 23;
+	geofs.aircraft.instance.definition.parts[7].animations[0].ratio = 23;
+	geofs.aircraft.instance.definition.parts[18].animations[0].ratio = -23;
+	geofs.aircraft.instance.definition.parts[19].animations[0].ratio = -23;
+	//Fix cockpit HUD scale
+	geofs.aircraft.instance.definition.instruments.hud.cockpit.scale = 0.5;
+	//Envelope protection
+	if (geofs.animation.values.mach >= 1.6) {
+	   controls.throttle = 0.9
+	};
+	if (geofs.animation.values.accZ >= 90 || geofs.animation.values.aoa >= 20) {
+	   
+	};
 }
 //HUD machmeter fix
 if (geofs.aircraft.instance.id == 2310 || geofs.aircraft.instance.id == 2581 || geofs.aircraft.instance.id == 2857 || geofs.aircraft.instance.id == 3591 || geofs.aircraft.instance.id == 3617 || geofs.aircraft.instance.id == 2953) {
