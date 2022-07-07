@@ -98,7 +98,7 @@ ui.notification.show("Note: this aircraft does not have realistic simulation. Do
    }
 }
 
-let implementFixes = setInterval(function(){
+implementFixes = setInterval(function(){
 fixAircraft()
 }, 1000);
 
@@ -128,7 +128,7 @@ function checkAircraftTypeAndSpeedAndImplementMachFX() {
 	   }
    }
 }
-var repeatChecks = setInterval(checkAircraftTypeAndSpeedAndImplementMachFX, 500);
+repeatChecks = setInterval(checkAircraftTypeAndSpeedAndImplementMachFX, 500);
 
 //Prop physics
 var aircraftChecked = new Boolean(0)
