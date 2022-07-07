@@ -133,8 +133,8 @@ repeatChecks = setInterval(checkAircraftTypeAndSpeedAndImplementMachFX, 500);
 //Prop physics
 var aircraftChecked = new Boolean(0)
 function checkAircraft() {
-if (aircraftChecked == 0){
 if (geofs.aircraft.instance.id == 21 || geofs.aircraft.instance.id == 2 || geofs.aircraft.instance.id == 2808 || geofs.aircraft.instance.id == 1 || geofs.aircraft.instance.id == 8 || geofs.aircraft.instance.id == 12 || geofs.aircraft.instance.id == 13 || geofs.aircraft.instance.id == 40 || geofs.aircraft.instance.id == 1069 || geofs.aircraft.instance.id == 2750)  {
+if (aircraftChecked == 0){
 let lastTorque = 0;
 let engtorquemp = 0;
 let elevtorquemp = 0;
