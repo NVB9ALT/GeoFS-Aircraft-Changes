@@ -130,6 +130,7 @@ function checkAircraftTypeAndSpeedAndImplementMachFX() {
 }
 repeatChecks = setInterval(checkAircraftTypeAndSpeedAndImplementMachFX, 500);
 
+/*
 //Prop physics
 var aircraftChecked = new Boolean(0)
 function checkAircraft() {
@@ -224,4 +225,5 @@ if (geofs.aircraft.instance.id != 21 || geofs.aircraft.instance.id != 2 || geofs
 checkPropInterval = setInterval(function(){
    checkAircraft()
 }, 1000);
+*/
 }
