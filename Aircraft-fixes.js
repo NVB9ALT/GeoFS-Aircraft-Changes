@@ -22,6 +22,9 @@ if (geofs.aircraft.instance.id == 18){
       this._rotation = M33.rotationZ(this._rotation, a)
    };
 }
+if (geofs.aircraft.instance.id == 236) {
+   geofs.aircraft.instance.definition.com = [0, 0, 0]
+}
 //F-14 swing wing physics fix
 if (geofs.aircraft.instance.id == 2581) {
    if (geofs.animation.values.optionalAnimatedPartPosition == 0) {
