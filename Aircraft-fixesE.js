@@ -22,6 +22,12 @@ if (geofs.aircraft.instance.id == 18){
       this._rotation = M33.rotationZ(this._rotation, a)
    };
 }
+if (geofs.aircraft.instance.id == 8) {
+   geofs.aircraft.instance.definition.Vspeeds = {}
+   geofs.aircraft.instance.definition.Vspeeds.VS = 53
+   geofs.aircraft.instance.definition.Vspeeds.VNO = 120
+   geofs.aircraft.instance.definition.Vspeeds.VNE = 182
+}
 if (geofs.aircraft.instance.id == 236) {
    geofs.aircraft.instance.definition.com = [0, 0, 0]
 }
@@ -49,6 +55,7 @@ if (geofs.aircraft.instance.id == 2844) {
 	geofs.aircraft.instance.definition.sounds[2].file = "https://geo-fs.com/sounds/f16/rpm2.ogg";
 	geofs.aircraft.instance.definition.parts[25].animations[0].ratio = 2.5;
 	geofs.aircraft.instance.definition.parts[25].animations[1].ratio = -2.5;
+	audio.init(geofs.aircraft.instance.definition.sounds);
 }
 if (geofs.aircraft.instance.id == 4172) {
    //fix power scaling with altitude
