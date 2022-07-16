@@ -66,7 +66,7 @@ if (geofs.aircraft.instance.id == 4172) {
 	//Adjusting lift
 	geofs.aircraft.instance.definition.parts[3].area = 10;
 	geofs.aircraft.instance.definition.parts[15].area = 10;
-   geofs.aircraft.instance.definition.parts[1].liftFactor = 5;
+    geofs.aircraft.instance.definition.parts[1].liftFactor = 5;
 	//Trying to make the speedbrakes less absurdly powerful
 	geofs.aircraft.instance.definition.parts[13].dragFactor = 5;
 	geofs.aircraft.instance.definition.parts[27].dragFactor = 5;
@@ -106,7 +106,7 @@ ui.notification.show("Note: this aircraft does not have realistic simulation. Do
    notifiedTrue = 1
 	   }
    }
-
+}
 implementFixes = setInterval(function(){
 fixAircraft()
 }, 1000);
@@ -223,25 +223,21 @@ let engtorquemp = 0;
 let elevtorquemp = 0;
 let ailtorquemp = 0;
 let rudtorquemp = 0;
-
 //basic maths to figure out what the engine torque is, then apply it.
 function tqmaths() {
   engtorquemp = -(lastTorque - geofs.animation.values.rpm) * 6;
     geofs.aircraft.instance.rigidBody.applyTorqueImpulse([splitAxes(engtorquemp - ailtorquemp)[0] + splitAxesOffset(elevtorquemp)[0],splitAxes(engtorquemp - ailtorquemp)[1] + splitAxesOffset(elevtorquemp)[1],splitAxes(engtorquemp - ailtorquemp)[2] + splitAxesOffset(elevtorquemp)[2]])
 };
-
 function getEngineTorque() {
   lastTorque = geofs.animation.values.rpm
   setTimeout(tqmaths, 100)
 };
-
 //propwash stuff
 function getControlWash() {
   elevtorquemp = (geofs.animation.values.rpm / 10) * geofs.animation.values.pitch;
   ailtorquemp = (geofs.animation.values.rpm / 10) * geofs.animation.values.roll;
   rudtorquemp = (geofs.animation.values.rpm / 10) * geofs.animation.values.yaw;
 }
-
 //more complicated maths to resolve torque axes
   //𝐹𝑠=|𝐹⃗ |cos(𝜃𝑠,𝐹)
 function splitAxes(force) {
@@ -277,20 +273,17 @@ function splitAxesOffset(force) {
 function doForces() {
   getEngineTorque()
 }
-
 //stall and ground effect stuff
 function stallForces() {
   if (geofs.animation.values.aoa > 10) {
     geofs.aircraft.instance.rigidBody.applyTorqueImpulse([splitAxes(Math.random()*geofs.animation.values.aoa * 2)[0],splitAxes(Math.random()*geofs.animation.values.aoa * 2)[1],0])
   }
 }
-
 function groundEffect() {
   if (geofs.animation.values.haglFeet <= 10) {
     geofs.aircraft.instance.rigidBody.applyCentralImpulse([0,0,(-(geofs.animation.values.haglFeet) + 10) * geofs.animation.values.kias])
   }
 }
-
 interval = setInterval(function(){
   groundEffect();
   stallForces();
@@ -308,4 +301,4 @@ checkPropInterval = setInterval(function(){
    checkAircraft()
 }, 1000);
 */
-}
+   }
