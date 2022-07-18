@@ -1,8 +1,56 @@
 function realismify() {
 var notifiedTrue = new Boolean(0)
 function fixAircraft() {
-//Su-35 gets thrust vectoring on the yaw axis
+//F16 automatic high-AOA slats deploy
+if (geofs.aircraft.instance.id == 7) {
+   geofs.aircraft.instance.definition.parts[13].animations[1] = {};
+	geofs.aircraft.instance.definition.parts[13].animations[1].type = "rotate";
+	geofs.aircraft.instance.definition.parts[13].animations[1].axis = "X";
+	geofs.aircraft.instance.definition.parts[13].animations[1].value = "aoa";
+	geofs.aircraft.instance.definition.parts[13].animations[1].ratio = 2;
+	geofs.aircraft.instance.definition.parts[13].animations[1].currentValue = null;
+	geofs.aircraft.instance.definition.parts[13].animations[1].rotationMethod = function(a) {
+      this._rotation = M33.rotationX(this._rotation, a)
+   };
+	geofs.aircraft.instance.definition.parts[14].animations[1] = {};
+	geofs.aircraft.instance.definition.parts[14].animations[1].type = "rotate";
+	geofs.aircraft.instance.definition.parts[14].animations[1].axis = "X";
+	geofs.aircraft.instance.definition.parts[14].animations[1].value = "aoa";
+	geofs.aircraft.instance.definition.parts[14].animations[1].ratio = 2;
+	geofs.aircraft.instance.definition.parts[14].animations[1].currentValue = null;
+	geofs.aircraft.instance.definition.parts[14].animations[1].rotationMethod = function(a) {
+      this._rotation = M33.rotationX(this._rotation, a)
+   };
+	geofs.aircraft.instance.definition.parts[12].animations[1] = {};
+	geofs.aircraft.instance.definition.parts[12].animations[1].type = "rotate";
+	geofs.aircraft.instance.definition.parts[12].animations[1].axis = "X";
+	geofs.aircraft.instance.definition.parts[12].animations[1].value = "aoa";
+	geofs.aircraft.instance.definition.parts[12].animations[1].ratio = -0.5;
+	geofs.aircraft.instance.definition.parts[12].animations[1].currentValue = null;
+	geofs.aircraft.instance.definition.parts[12].animations[1].rotationMethod = function(a) {
+      this._rotation = M33.rotationX(this._rotation, a)
+   };
+};
+//Su-35 gets thrust vectoring on the yaw axis and high-AOA slats deploy
 if (geofs.aircraft.instance.id == 18){
+   geofs.aircraft.instance.definition.parts[8].animations[1] = {};
+	geofs.aircraft.instance.definition.parts[8].animations[1].type = "rotate";
+	geofs.aircraft.instance.definition.parts[8].animations[1].axis = "X";
+	geofs.aircraft.instance.definition.parts[8].animations[1].value = "aoa";
+	geofs.aircraft.instance.definition.parts[8].animations[1].ratio = 2;
+	geofs.aircraft.instance.definition.parts[8].animations[1].currentValue = null;
+	geofs.aircraft.instance.definition.parts[8].animations[1].rotationMethod = function(a) {
+      this._rotation = M33.rotationX(this._rotation, a)
+   };
+	geofs.aircraft.instance.definition.parts[10].animations[1] = {};
+	geofs.aircraft.instance.definition.parts[10].animations[1].type = "rotate";
+	geofs.aircraft.instance.definition.parts[10].animations[1].axis = "X";
+	geofs.aircraft.instance.definition.parts[10].animations[1].value = "aoa";
+	geofs.aircraft.instance.definition.parts[10].animations[1].ratio = 2;
+	geofs.aircraft.instance.definition.parts[10].animations[1].currentValue = null;
+	geofs.aircraft.instance.definition.parts[10].animations[1].rotationMethod = function(a) {
+      this._rotation = M33.rotationX(this._rotation, a)
+   };
    geofs.aircraft.instance.definition.parts[46].animations[2] = {};
 	geofs.aircraft.instance.definition.parts[46].animations[2].type = "rotate";
 	geofs.aircraft.instance.definition.parts[46].animations[2].axis = "Z";
@@ -22,12 +70,14 @@ if (geofs.aircraft.instance.id == 18){
       this._rotation = M33.rotationZ(this._rotation, a)
    };
 }
+//fix Pitts S-1 airspeed indicator
 if (geofs.aircraft.instance.id == 8) {
    geofs.aircraft.instance.definition.Vspeeds = {}
    geofs.aircraft.instance.definition.Vspeeds.VS = 53
    geofs.aircraft.instance.definition.Vspeeds.VNO = 120
    geofs.aircraft.instance.definition.Vspeeds.VNE = 182
 }
+//fix E190 COM
 if (geofs.aircraft.instance.id == 236) {
    geofs.aircraft.instance.definition.com = [0, 0, 0]
 }
@@ -57,6 +107,7 @@ if (geofs.aircraft.instance.id == 2844) {
 	geofs.aircraft.instance.definition.parts[25].animations[1].ratio = -2.5;
 	audio.init(geofs.aircraft.instance.definition.sounds);
 }
+//HAL Tejas rework
 if (geofs.aircraft.instance.id == 4172) {
    //fix power scaling with altitude
    if (typeof geofs.aircraft.instance.definition.zeroRPMAltitude != undefined) {
