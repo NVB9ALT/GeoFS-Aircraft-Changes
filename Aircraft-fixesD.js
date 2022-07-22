@@ -22,7 +22,7 @@ if (geofs.aircraft.instance.id == 7) {
 	geofs.aircraft.instance.definition.parts[14].animations[1].rotationMethod = function(a) {
       this._rotation = M33.rotationX(this._rotation, a)
    };
-   geofs.aircraft.instance.definition.parts[14].animations[0].ratio = 0.069;
+   geofs.aircraft.instance.definition.parts[13].animations[0].ratio = 0.069;
    geofs.aircraft.instance.definition.parts[14].animations[0].ratio = 0.069;
 	
 	geofs.aircraft.instance.definition.parts[12].animations[1] = {};
