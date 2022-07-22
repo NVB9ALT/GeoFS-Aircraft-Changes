@@ -86,9 +86,9 @@ geofs.aircraft.instance.definition.parts[3].area = 5
 geofs.aircraft.instance.definition.parts[4].area = 15
 geofs.aircraft.instance.definition.parts[3].area = 15
 	}
-   if (notifiedTrue == 0) {
+   if (notifiedTrue1 == 0) {
 ui.notification.show("Use the spoilers key to descend more rapidly.");
-   notifiedTrue = 1
+   notifiedTrue1 = 1
 	   }
 };
 //fix E190 COM
