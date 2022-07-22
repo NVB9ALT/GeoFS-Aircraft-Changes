@@ -1,5 +1,6 @@
 function realismify() {
 var notifiedTrue = new Boolean(0)
+var notifiedTrue1 = new Boolean(0)
 function fixAircraft() {
 //F16 automatic high-AOA slats deploy
 if (geofs.aircraft.instance.id == 7) {
@@ -77,6 +78,19 @@ if (geofs.aircraft.instance.id == 8) {
    geofs.aircraft.instance.definition.Vspeeds.VNO = 120
    geofs.aircraft.instance.definition.Vspeeds.VNE = 182
 }
+if (geofs.aircraft.instance.id == 50) {
+   if (geofs.animation.values.airbrakesTarget == 1) {
+geofs.aircraft.instance.definition.parts[4].area = 5
+geofs.aircraft.instance.definition.parts[3].area = 5
+	} else {
+geofs.aircraft.instance.definition.parts[4].area = 15
+geofs.aircraft.instance.definition.parts[3].area = 15
+	}
+   if (notifiedTrue == 0) {
+ui.notification.show("Use the spoilers key to descend more rapidly.");
+   notifiedTrue = 1
+	   }
+};
 //fix E190 COM
 if (geofs.aircraft.instance.id == 236) {
    geofs.aircraft.instance.definition.com = [0, 0, 0]
