@@ -22,6 +22,9 @@ if (geofs.aircraft.instance.id == 7) {
 	geofs.aircraft.instance.definition.parts[14].animations[1].rotationMethod = function(a) {
       this._rotation = M33.rotationX(this._rotation, a)
    };
+   geofs.aircraft.instance.definition.parts[14].animations[0].ratio = 0.069;
+   geofs.aircraft.instance.definition.parts[14].animations[0].ratio = 0.069;
+	
 	geofs.aircraft.instance.definition.parts[12].animations[1] = {};
 	geofs.aircraft.instance.definition.parts[12].animations[1].type = "rotate";
 	geofs.aircraft.instance.definition.parts[12].animations[1].axis = "X";
@@ -52,6 +55,9 @@ if (geofs.aircraft.instance.id == 18){
 	geofs.aircraft.instance.definition.parts[10].animations[1].rotationMethod = function(a) {
       this._rotation = M33.rotationX(this._rotation, a)
    };
+	geofs.aircraft.instance.definition.parts[8].animations[0].ratio = 0.069;
+   geofs.aircraft.instance.definition.parts[10].animations[0].ratio = 0.069;
+	
    geofs.aircraft.instance.definition.parts[46].animations[2] = {};
 	geofs.aircraft.instance.definition.parts[46].animations[2].type = "rotate";
 	geofs.aircraft.instance.definition.parts[46].animations[2].axis = "Z";
@@ -275,7 +281,7 @@ function checkAircraftTypeAndSpeedAndImplementMachFX() {
 	   }
    }
 }
-repeatChecks = setInterval(checkAircraftTypeAndSpeedAndImplementMachFX, 500);
+repeatChecks = setInterval(function(){checkAircraftTypeAndSpeedAndImplementMachFX}, 1000);
 
 /*
 //Prop physics
