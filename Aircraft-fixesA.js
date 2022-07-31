@@ -2,12 +2,16 @@ function realismify() {
 var notifiedTrue = new Boolean(0)
 var notifiedTrue1 = new Boolean(0)
 function fixAircraft() {
+//Fixing the default 3d model for unknown ADS-B aircraft
+geofs.aircraftList['1000'].dir = '|models|aircraft|generics|c182|'
 //F16 automatic high-AOA slats deploy
 if (geofs.aircraft.instance.id == 7) {
    geofs.aircraft.instance.definition.parts[13].animations[1] = {};
 	geofs.aircraft.instance.definition.parts[13].animations[1].type = "rotate";
 	geofs.aircraft.instance.definition.parts[13].animations[1].axis = "X";
 	geofs.aircraft.instance.definition.parts[13].animations[1].value = "aoa";
+	geofs.aircraft.instance.definition.parts[13].animations[1].min = 1;
+	geofs.aircraft.instance.definition.parts[13].animations[1].max = 0;
 	geofs.aircraft.instance.definition.parts[13].animations[1].ratio = 2;
 	geofs.aircraft.instance.definition.parts[13].animations[1].currentValue = null;
 	geofs.aircraft.instance.definition.parts[13].animations[1].rotationMethod = function(a) {
@@ -17,12 +21,14 @@ if (geofs.aircraft.instance.id == 7) {
 	geofs.aircraft.instance.definition.parts[14].animations[1].type = "rotate";
 	geofs.aircraft.instance.definition.parts[14].animations[1].axis = "X";
 	geofs.aircraft.instance.definition.parts[14].animations[1].value = "aoa";
+	geofs.aircraft.instance.definition.parts[13].animations[1].min = 1;
+	geofs.aircraft.instance.definition.parts[13].animations[1].max = 0;
 	geofs.aircraft.instance.definition.parts[14].animations[1].ratio = 2;
 	geofs.aircraft.instance.definition.parts[14].animations[1].currentValue = null;
 	geofs.aircraft.instance.definition.parts[14].animations[1].rotationMethod = function(a) {
       this._rotation = M33.rotationX(this._rotation, a)
    };
-   geofs.aircraft.instance.definition.parts[13].animations[0].ratio = 0.069;
+   geofs.aircraft.instance.definition.parts[14].animations[0].ratio = 0.069;
    geofs.aircraft.instance.definition.parts[14].animations[0].ratio = 0.069;
 	
 	geofs.aircraft.instance.definition.parts[12].animations[1] = {};
@@ -35,29 +41,8 @@ if (geofs.aircraft.instance.id == 7) {
       this._rotation = M33.rotationX(this._rotation, a)
    };
 };
-//Su-35 gets thrust vectoring on the yaw axis and high-AOA slats deploy
+//Su-35 gets thrust vectoring on the yaw axis
 if (geofs.aircraft.instance.id == 18){
-   geofs.aircraft.instance.definition.parts[8].animations[1] = {};
-	geofs.aircraft.instance.definition.parts[8].animations[1].type = "rotate";
-	geofs.aircraft.instance.definition.parts[8].animations[1].axis = "X";
-	geofs.aircraft.instance.definition.parts[8].animations[1].value = "aoa";
-	geofs.aircraft.instance.definition.parts[8].animations[1].ratio = 2;
-	geofs.aircraft.instance.definition.parts[8].animations[1].currentValue = null;
-	geofs.aircraft.instance.definition.parts[8].animations[1].rotationMethod = function(a) {
-      this._rotation = M33.rotationX(this._rotation, a)
-   };
-	geofs.aircraft.instance.definition.parts[10].animations[1] = {};
-	geofs.aircraft.instance.definition.parts[10].animations[1].type = "rotate";
-	geofs.aircraft.instance.definition.parts[10].animations[1].axis = "X";
-	geofs.aircraft.instance.definition.parts[10].animations[1].value = "aoa";
-	geofs.aircraft.instance.definition.parts[10].animations[1].ratio = 2;
-	geofs.aircraft.instance.definition.parts[10].animations[1].currentValue = null;
-	geofs.aircraft.instance.definition.parts[10].animations[1].rotationMethod = function(a) {
-      this._rotation = M33.rotationX(this._rotation, a)
-   };
-	geofs.aircraft.instance.definition.parts[8].animations[0].ratio = 0.069;
-   geofs.aircraft.instance.definition.parts[10].animations[0].ratio = 0.069;
-	
    geofs.aircraft.instance.definition.parts[46].animations[2] = {};
 	geofs.aircraft.instance.definition.parts[46].animations[2].type = "rotate";
 	geofs.aircraft.instance.definition.parts[46].animations[2].axis = "Z";
@@ -157,7 +142,7 @@ if (geofs.aircraft.instance.id == 4172) {
 	geofs.aircraft.instance.definition.instruments.hud.cockpit.scale = 0.5;
 	//Envelope protection
 	if (geofs.animation.values.mach >= 1.6) {
-	   controls.throttle = 0.9
+	   controls.throttle = 0.94
 	};
 	if (geofs.animation.values.accZ >= 90 || geofs.animation.values.aoa >= 20) {
 	   
@@ -181,6 +166,22 @@ ui.notification.show("Note: this aircraft does not have realistic simulation. Do
 implementFixes = setInterval(function(){
 fixAircraft()
 }, 1000);
+
+
+function controlsLimiters() { //will add thrust reverser locks at some point
+   if (geofs.animation.values.groundContact == 0 && geofs.animation.values.airbrakesTarget == 1) {
+controls.airbrakes.target = 0.25
+	};
+	if (geofs.animation.values.groundContact == 1 && controls.airbrakes.target == 0.25) {
+controls.airbrakes.target = 1
+	};
+   if (geofs.animation.values.groundContact == 1 && controls.airbrakes.target == 0) {
+      if (controls.airbrakes.target == 0.25) {
+controls.airbrakes.target = 0
+      };
+	};
+};
+resetSplrInterval = setInterval(function(){controlsLimiters()},100);
 
 //Better CC wingflex
 geofs.animation.values.liftLeftWing = 1
@@ -255,33 +256,6 @@ wingflexInterval = setInterval(function(){
 runBetterWingflex()
 },1000);
 
-//Mach buffet
-//subsonic aircraft only obviously
-function checkAircraftTypeAndSpeedAndImplementMachFX() {
-   if (geofs.aircraft.instance.id == 1 || geofs.aircraft.instance.id == 2 || geofs.aircraft.instance.id == 5 || geofs.aircraft.instance.id == 6 || geofs.aircraft.instance.id == 8 || geofs.aircraft.instance.id == 11 || geofs.aircraft.instance.id == 12 || geofs.aircraft.instance.id == 13 || geofs.aircraft.instance.id == 14 || geofs.aircraft.instance.id == 15 || geofs.aircraft.instance.id == 16 || geofs.aircraft.instance.id == 2310 || geofs.aircraft.instance.id == 2418 || geofs.aircraft.instance.id == 2420 || geofs.aircraft.instance.id == 2426 || geofs.aircraft.instance.id == 2461 || geofs.aircraft.instance.id == 2750 || geofs.aircraft.instance.id == 2752 || geofs.aircraft.instance.id == 2808 || geofs.aircraft.instance.id == 2864 || geofs.aircraft.instance.id == 2892 || geofs.aircraft.instance.id == 2943 || geofs.aircraft.instance.id == 2976 || geofs.aircraft.instance.id == 2989 || geofs.aircraft.instance.id == 3109 || geofs.aircraft.instance.id == 3289 || geofs.aircraft.instance.id == 3460 ){ //straight wing aircraft list
-	   if (geofs.animation.values.mach > 0.675){
-		   geofs.preferences.weather.advanced.turbulences = 7
-		}
-		if (geofs.animation.values.mach > 0.735){
-		   geofs.preferences.weather.advanced.turbulences = 9 
-		}
-		else {
-		   geofs.preferences.weather.advanced.turbulences = 0.2
-		}
-	}
-	if (geofs.aircraft.instance.id == 3 || geofs.aircraft.instance.id == 4 || geofs.aircraft.instance.id == 10 || geofs.aircraft.instance.id == 236 || geofs.aircraft.instance.id == 237 || geofs.aircraft.instance.id == 238 || geofs.aircraft.instance.id == 239 || geofs.aircraft.instance.id == 2003 || geofs.aircraft.instance.id == 2395 || geofs.aircraft.instance.id == 2556 || geofs.aircraft.instance.id == 2700 || geofs.aircraft.instance.id == 2706 || geofs.aircraft.instance.id == 2769 || geofs.aircraft.instance.id == 2772 || geofs.aircraft.instance.id == 2788 || geofs.aircraft.instance.id == 2843 || geofs.aircraft.instance.id == 2865 || geofs.aircraft.instance.id == 2870 || geofs.aircraft.instance.id == 2871 || geofs.aircraft.instance.id == 2878 || geofs.aircraft.instance.id == 2879 || geofs.aircraft.instance.id == 2899 || geofs.aircraft.instance.id == 2951 || geofs.aircraft.instance.id == 2973 || geofs.aircraft.instance.id == 3011 || geofs.aircraft.instance.id == 3036 || geofs.aircraft.instance.id == 3054 || geofs.aircraft.instance.id == 3140 || geofs.aircraft.instance.id == 3179 || geofs.aircraft.instance.id == 3180 || geofs.aircraft.instance.id == 3292 || geofs.aircraft.instance.id == 3307 || geofs.aircraft.instance.id == 3341 || geofs.aircraft.instance.id == 3534 || geofs.aircraft.instance.id == 3575 || geofs.aircraft.instance.id == 4017 || geofs.aircraft.instance.id == 3575){ //swept wing aircraft list
-		if (geofs.animation.values.mach > 0.8){
-		   geofs.preferences.weather.advanced.turbulences = 7
-		}
-		if (geofs.animation.values.mach > 0.9){
-		   geofs.preferences.weather.advanced.turbulences = 9
-		}
-		else {
-		geofs.preferences.weather.advanced.turbulences = 0.2
-	   }
-   }
-}
-repeatChecks = setInterval(function(){checkAircraftTypeAndSpeedAndImplementMachFX}, 1000);
 
 /*
 //Prop physics
