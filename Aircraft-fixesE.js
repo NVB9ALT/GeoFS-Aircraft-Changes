@@ -2,8 +2,6 @@ function realismify() {
 var notifiedTrue = new Boolean(0)
 var notifiedTrue1 = new Boolean(0)
 function fixAircraft() {
-//Fixing the default 3d model for unknown ADS-B aircraft
-geofs.aircraftList['1000'].dir = '|models|aircraft|generics|c182|'
 //F16 automatic high-AOA slats deploy
 if (geofs.aircraft.instance.id == 7) {
    geofs.aircraft.instance.definition.parts[13].animations[1] = {};
@@ -21,8 +19,8 @@ if (geofs.aircraft.instance.id == 7) {
 	geofs.aircraft.instance.definition.parts[14].animations[1].type = "rotate";
 	geofs.aircraft.instance.definition.parts[14].animations[1].axis = "X";
 	geofs.aircraft.instance.definition.parts[14].animations[1].value = "aoa";
-	geofs.aircraft.instance.definition.parts[13].animations[1].min = 1;
-	geofs.aircraft.instance.definition.parts[13].animations[1].max = 0;
+	geofs.aircraft.instance.definition.parts[14].animations[1].min = 1;
+	geofs.aircraft.instance.definition.parts[14].animations[1].max = 0;
 	geofs.aircraft.instance.definition.parts[14].animations[1].ratio = 2;
 	geofs.aircraft.instance.definition.parts[14].animations[1].currentValue = null;
 	geofs.aircraft.instance.definition.parts[14].animations[1].rotationMethod = function(a) {
@@ -168,7 +166,7 @@ fixAircraft()
 }, 1000);
 
 
-function controlsLimiters() { //will add thrust reverser locks at some point
+function controlsLimiters() {
    if (geofs.animation.values.groundContact == 0 && geofs.animation.values.airbrakesTarget == 1) {
 controls.airbrakes.target = 0.25
 	};
@@ -180,6 +178,11 @@ controls.airbrakes.target = 1
 controls.airbrakes.target = 0
       };
 	};
+if (geofs.aircraft.instance.id != 4017 && geofs.aircraft.instance.id != 2976 && geofs.aircraft.instance.id != 2943 && geofs.aircraft.instance.id != 247 && geofs.aircraft.instance.id != 6 && geofs.aircraft.instance.id != 20) {
+   if (geofs.animation.values.haglFeet > 25) {
+//prevent thrust reverser deployment in flight
+      };
+   };
 };
 resetSplrInterval = setInterval(function(){controlsLimiters()},100);
 
@@ -256,10 +259,8 @@ wingflexInterval = setInterval(function(){
 runBetterWingflex()
 },1000);
 
-
 /*
 //Prop physics
-var aircraftChecked = new Boolean(0)
 function checkAircraft() {
 if (geofs.aircraft.instance.id == 21 || geofs.aircraft.instance.id == 2 || geofs.aircraft.instance.id == 2808 || geofs.aircraft.instance.id == 1 || geofs.aircraft.instance.id == 8 || geofs.aircraft.instance.id == 12 || geofs.aircraft.instance.id == 13 || geofs.aircraft.instance.id == 40 || geofs.aircraft.instance.id == 1069 || geofs.aircraft.instance.id == 2750)  {
 if (aircraftChecked == 0){
