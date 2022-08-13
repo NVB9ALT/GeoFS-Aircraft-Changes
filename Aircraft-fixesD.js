@@ -2,6 +2,11 @@ function realismify() {
 var notifiedTrue = new Boolean(0)
 var notifiedTrue1 = new Boolean(0)
 function fixAircraft() {
+//Fixing the XB-70's canards
+if (geofs.aircraft.instance.id == 2948) {
+geofs.aircraft.instance.definition.parts[69].animations[0].ratio = 25
+geofs.aircraft.instance.definition.parts[70].animations[0].ratio = 25
+};
 //F16 automatic high-AOA slats deploy
 if (geofs.aircraft.instance.id == 7) {
    geofs.aircraft.instance.definition.parts[13].animations[1] = {};
@@ -68,7 +73,7 @@ if (geofs.aircraft.instance.id == 8) {
    geofs.aircraft.instance.definition.Vspeeds.VNE = 182
 }
 if (geofs.aircraft.instance.id == 50) {
-   if (geofs.animation.values.airbrakesTarget == 1) {
+   if (geofs.animation.values.airbrakesTarget == 1 || geofs.animation.values.airbrakesTarget == 0.25) {
 geofs.aircraft.instance.definition.parts[4].area = 5
 geofs.aircraft.instance.definition.parts[3].area = 5
 	} else {
