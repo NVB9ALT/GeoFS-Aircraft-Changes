@@ -178,7 +178,6 @@ if (geofs.aircraft.instance.id == 2310 || geofs.aircraft.instance.id == 2581 || 
    //geofs.aircraft.instance.definition.instruments.hud.overlay.overlays[6].animations[0].ratio = 23
    geofs.aircraft.instance.definition.instruments.hud.overlay.overlays[6].animations[0].value = machTenth
 }
-//Inaccurate physics alert
 implementFixes = setInterval(function(){
 fixAircraft()
 }, 1000);
@@ -196,11 +195,6 @@ controls.airbrakes.target = 1
 controls.airbrakes.target = 0
       };
 	};
-if (geofs.aircraft.instance.id != 4017 && geofs.aircraft.instance.id != 2976 && geofs.aircraft.instance.id != 2943 && geofs.aircraft.instance.id != 247 && geofs.aircraft.instance.id != 6 && geofs.aircraft.instance.id != 20) {
-   if (geofs.animation.values.haglFeet > 25) {
-//prevent thrust reverser deployment in flight
-      };
-   };
 };
 resetSplrInterval = setInterval(function(){controlsLimiters()},100);
 
