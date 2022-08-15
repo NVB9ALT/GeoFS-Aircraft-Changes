@@ -1,5 +1,4 @@
 function realismify() {
-var notifiedTrue = new Boolean(0)
 var notifiedTrue1 = new Boolean(0)
 function fixAircraft() {
 //Fixing the XB-70's canards
@@ -115,6 +114,27 @@ if (geofs.aircraft.instance.id == 2844) {
 	geofs.aircraft.instance.definition.parts[25].animations[1].ratio = -2.5;
 	audio.init(geofs.aircraft.instance.definition.sounds);
 }
+//Fixing the realism of the F-15
+if (geofs.aircraft.instance.id == 3591) {
+geofs.aircraft.instance.definition.autopilot.maxBankAngle = 45;
+geofs.aircraft.instance.definition.parts[8].area = 20;
+geofs.aircraft.instance.definition.parts[8].stallIncidence = 17;
+geofs.aircraft.instance.definition.parts[10].area = 20;
+geofs.aircraft.instance.definition.parts[10].stallIncidence = 17;
+geofs.aircraft.instance.definition.parts[28].area = 10;
+geofs.aircraft.instance.definition.parts[29].area = 10;
+   if (geofs.animation.values.mach >= 1.5) {
+geofs.aircraft.instance.engines[0].thrust = 150000;
+geofs.aircraft.instance.engines[0].afterBurnerThrust = 200000;
+geofs.aircraft.instance.engines[1].thrust = 150000;
+geofs.aircraft.instance.engines[1].afterBurnerThrust = 200000;
+   } else {
+geofs.aircraft.instance.engines[0].thrust = 100000;
+geofs.aircraft.instance.engines[0].afterBurnerThrust = 125000;
+geofs.aircraft.instance.engines[1].thrust = 100000;
+geofs.aircraft.instance.engines[1].afterBurnerThrust = 125000;
+   }
+};
 //HAL Tejas rework
 if (geofs.aircraft.instance.id == 4172) {
    //fix power scaling with altitude
@@ -159,13 +179,6 @@ if (geofs.aircraft.instance.id == 2310 || geofs.aircraft.instance.id == 2581 || 
    geofs.aircraft.instance.definition.instruments.hud.overlay.overlays[6].animations[0].value = machTenth
 }
 //Inaccurate physics alert
-if (geofs.aircraft.instance.id == 3591) {
-   if (notifiedTrue == 0) {
-ui.notification.show("Note: this aircraft does not have realistic simulation. Do not expect IRL-accurate performance.");
-   notifiedTrue = 1
-	   }
-   }
-}
 implementFixes = setInterval(function(){
 fixAircraft()
 }, 1000);
