@@ -171,6 +171,7 @@ if (geofs.aircraft.instance.id == 4172) {
 	   
 	};
 }
+}
 //HUD machmeter fix
 if (geofs.aircraft.instance.id == 2310 || geofs.aircraft.instance.id == 2581 || geofs.aircraft.instance.id == 2857 || geofs.aircraft.instance.id == 3591 || geofs.aircraft.instance.id == 3617 || geofs.aircraft.instance.id == 2953) {
    var machTenth = geofs.animation.values.machTenth
