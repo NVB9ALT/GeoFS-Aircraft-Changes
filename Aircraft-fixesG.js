@@ -180,8 +180,8 @@ if (geofs.aircraft.instance.id == 4172) {
 	if (geofs.animation.values.accZ >= 90 || geofs.animation.values.aoa >= 20) {
 	   
 	};
+    }
 }
-//HUD machmeter fix
 implementFixes = setInterval(function(){
 fixAircraft()
 }, 1000);
