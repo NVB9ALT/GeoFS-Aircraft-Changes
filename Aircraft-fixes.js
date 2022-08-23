@@ -99,7 +99,17 @@ if (geofs.aircraft.instance.id == 2581) {
 	geofs.aircraft.instance.definition.parts[3].area = 20
       }
 	//Wings swing out when high AoA
+	if (geofs.animation.values.aoa >= 7.5 && geofs.animation.values.aoa <= 20 && geofs.animation.values.kias >= 300) {
+	   controls.optionalAnimatedPart.target = geofs.animation.values.aoa / 20
    }
+}
+//Spitfire zeroThrustAltitude instead of zeroRPMAltitude, keeping the RPMs from dropping obscenely low
+if (geofs.aircraft.instance.id == 2808) {
+   if (typeof geofs.aircraft.instance.definition.zeroRPMAltitude != undefined) {
+      delete geofs.aircraft.instance.definition.zeroRPMAltitude;
+	};
+	geofs.aircraft.instance.definition.zeroThrustAltitude = 60000;
+}
 //Huey power fix
 if (geofs.aircraft.instance.id == 2840) {
    geofs.aircraft.instance.definition.parts[17].thrust = 25000
@@ -171,14 +181,7 @@ if (geofs.aircraft.instance.id == 4172) {
 	   
 	};
 }
-}
 //HUD machmeter fix
-if (geofs.aircraft.instance.id == 2310 || geofs.aircraft.instance.id == 2581 || geofs.aircraft.instance.id == 2857 || geofs.aircraft.instance.id == 3591 || geofs.aircraft.instance.id == 3617 || geofs.aircraft.instance.id == 2953) {
-   var machTenth = geofs.animation.values.machTenth
-   geofs.animation.values.machTenth = Math.floor(10 * (geofs.animation.values.mach % 1).toPrecision(2))
-   //geofs.aircraft.instance.definition.instruments.hud.overlay.overlays[6].animations[0].ratio = 23
-   geofs.aircraft.instance.definition.instruments.hud.overlay.overlays[6].animations[0].value = machTenth
-}
 implementFixes = setInterval(function(){
 fixAircraft()
 }, 1000);
