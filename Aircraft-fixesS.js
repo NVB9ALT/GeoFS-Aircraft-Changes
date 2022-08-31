@@ -180,14 +180,422 @@ if (geofs.aircraft.instance.id == 4172) {
 	if (geofs.animation.values.accZ >= 90 || geofs.animation.values.aoa >= 20) {
 	   
 	};
-    }
+   }
+//Minor Corsair improvement - tricky startup
+if (geofs.aircraft.instance.id == 4251) {
+   geofs.aircraft.instance.definition.parts[20].area = 5
+   if (geofs.animation.values.rpm < 1000 && geofs.animation.values.throttle < 0.08) {
+geofs.aircraft.instance.stopEngine()
+	}
+}
 }
 implementFixes = setInterval(function(){
 fixAircraft()
 }, 1000);
 
-//had to move this here
-ui.notification.show("To turn off aileron-rudder linking, turn on Stunt Mode. You can do this in Options -> Graphics.");geofs.api.waterDetection.create();geofs.tiller = {};geofs.tiller.isEnabled = false;geofs.tiller.tillerUpdate = function() {if (geofs.tiller.isEnabled == true) {geofs.tiller.isEnabled = false;toggle.setAttribute("class", "mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded");} else {geofs.tiller.isEnabled = true;toggle.setAttribute("class", "mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded is-checked");}};let elementSel = document.getElementsByClassName('geofs-preference-list')[0].getElementsByClassName('geofs-advanced')[0].getElementsByClassName('geofs-stopMousePropagation')[0];let toggle = document.createElement("label");toggle.setAttribute("class", "mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded");toggle.setAttribute("for", "tiller");toggle.setAttribute("id", "tiller");toggle.setAttribute("tabindex", "0");toggle.setAttribute("dataUpgraded", ",MaterialSwitch,MaterialRipple");toggle.innerHTML = '<input type="checkbox" id="airports" class="mdl-switch__input" data-gespref="geofs.tiller.isEnabled"><span class="mdl-switch__label">Stunt Mode</span>';elementSel.appendChild(toggle);toggle.addEventListener("click", geofs.tiller.tillerUpdate);function runDynamicTiller() {if (geofs.tiller.isEnabled == false){if (geofs.animation.values.haglFeet <= 25) {controls.mixYawRoll = 0;controls.mixYawRollQuantity = 2;} else {controls.mixYawRoll = 1;controls.mixYawRollQuantity = 0.4;}} else {controls.mixYawRoll = 0;controls.mixYawRollQuantity = 2;};};tillerInterval = setInterval(function(){runDynamicTiller()},1000);
+
+//Experimental multiplayer aircraft sounds
+function fetchAircraftSoundsLow(aircraft1) {
+try {
+if (aircraft1 == 1) {
+   return "https://geo-fs.com/sounds/rotax/rpm1.ogg"
+}
+if (aircraft1 == 2) {
+   return "https://geo-fs.com/sounds/o235/rpm1.ogg"
+}
+if (aircraft1 == 3) {
+   return "https://geo-fs.com/sounds/jet/rpm1.ogg"
+}
+if (aircraft1 == 4) {
+   return "https://geo-fs.com/sounds/737/rpm0.ogg"
+}
+if (aircraft1 == 5) {
+   return "https://geo-fs.com/sounds/phenom/rpm0.ogg"
+}
+if (aircraft1 == 6) {
+   return "https://geo-fs.com/sounds/737/rpm0.ogg" //this is the Twin Otter but the sounds are not 6 sec long
+}
+if (aircraft1 == 7) {
+   return "https://geo-fs.com/sounds/f16/rpm0.ogg"
+}
+if (aircraft1 == 8) {
+   return "https://geo-fs.com/sounds/pitts/rpm1.ogg"
+}
+if (aircraft1 == 9) {
+   return "https://geo-fs.com/sounds/ec135/rpm2.ogg"
+}
+if (aircraft1 == 10) {
+   return "https://geo-fs.com/sounds/a380/rpm1.ogg"
+}
+if (aircraft1 == 12) {
+   return "https://geo-fs.com/sounds/pc7/turbine.ogg"
+}
+if (aircraft1 == 13) {
+   return "https://geo-fs.com/models/aircraft/premium/dhc2/sounds/rpm0.ogg"
+}
+if (aircraft1 == 14) {
+   return "https://geo-fs.com/models/aircraft/premium/cricri/sounds/rpm1.ogg"
+}
+if (aircraft1 == 15) {
+   return "https://geo-fs.com/sounds/p38/rpm0.ogg"
+}
+if (aircraft1 == 16) {
+   return "https://geo-fs.com/sounds/dc3/rpm1.ogg"
+}
+if (aircraft1 == 18) {
+   return "https://geo-fs.com/sounds/su35/rpm1.ogg"
+}
+} catch(error) {
+throw("Error: sound loading failed 1. " + error)
+}
+}
+function fetchAircraftSoundsHigh(aircraft2) {
+try {
+if (aircraft2 == 1) {
+   return "https://geo-fs.com/sounds/rotax/rpm4.ogg"
+}
+if (aircraft2 == 2) {
+   return "https://geo-fs.com/sounds/o235/rpm4.ogg"
+}
+if (aircraft2 == 3) {
+   return "https://geo-fs.com/sounds/jet/rpm3.ogg"
+}
+if (aircraft2 == 4) {
+   return "https://geo-fs.com/sounds/737/rpm2.ogg"
+}
+if (aircraft2 == 5) {
+   return "https://geo-fs.com/sounds/737/rpm2.ogg"
+}
+if (aircraft2 == 6) {
+   return "https://geo-fs.com/sounds/737/rpm2.ogg"
+}
+if (aircraft2 == 7) {
+   return "https://geo-fs.com/sounds/f16/rpm2.ogg"
+}
+if (aircraft2 == 8) {
+   return "https://geo-fs.com/sounds/pitts/rpm3.ogg"
+}
+if (aircraft2 == 9) {
+   return "https://geo-fs.com/sounds/ec135/rpm2.ogg"
+}
+if (aircraft2 == 10) {
+   return "https://geo-fs.com/sounds/a380/rpm4.ogg"
+}
+if (aircraft2 == 12) {
+   return "https://geo-fs.com/sounds/pc7/prop.ogg"
+}
+if (aircraft2 == 13) {
+   return "https://geo-fs.com/models/aircraft/premium/dhc2/sounds/rpm1.ogg"
+}
+if (aircraft2 == 14) {
+   return "https://geo-fs.com/models/aircraft/premium/cricri/sounds/rpm2.ogg"
+}
+if (aircraft2 == 15) {
+   return "https://geo-fs.com/sounds/p38/rpm2.ogg"
+}
+if (aircraft2 == 16) {
+   return "https://geo-fs.com/sounds/dc3/rpm4.ogg"
+}
+if (aircraft2 == 18) {
+   return "https://geo-fs.com/sounds/su35/rpm4.ogg"
+}
+} catch(error) {
+throw("Error: sound loading failed 2. " + error)
+}
+}
+//some method of correcting for wind is needed (i think)
+var lastAirspeed = null;
+function computeSounds() {
+Object.values(multiplayer.visibleUsers).forEach(function(e){
+lastAirspeed = e.lastUpdate.st.as
+setTimeout(() => {
+	if (e.referencePoint.lla[2] - geofs.aircraft.instance.llaLocation[2] <= 1000 && geofs.aircraft.instance.llaLocation[2] - e.referencePoint.lla[2] <= 1000 && e.distance < 500 && e.lastUpdate.st.as >= 50 && (e.lastUpdate.st.as - lastAirspeed) >= -1) {
+audio.impl.html5.playFile(fetchAircraftSoundsHigh(e.aircraft))
+	} else if (e.referencePoint.lla[2] - geofs.aircraft.instance.llaLocation[2] <= 1000 && geofs.aircraft.instance.llaLocation[2] - e.referencePoint.lla[2] <= 1000 && e.distance < 500 && e.lastUpdate.st.as <= 49 && (e.lastUpdate.st.as - lastAirspeed) >= 5) {
+audio.impl.html5.playFile(fetchAircraftSoundsHigh(e.aircraft))
+	} else if (e.referencePoint.lla[2] - geofs.aircraft.instance.llaLocation[2] <= 1000 && geofs.aircraft.instance.llaLocation[2] - e.referencePoint.lla[2] <= 1000 && e.distance < 500) {
+audio.impl.html5.playFile(fetchAircraftSoundsLow(e.aircraft))
+	}
+	},5750)
+})
+};
+multiplayerSoundInterval = setInterval(function(){computeSounds()},6000)
+
+//experimental fly-by-wire for the F-16
+function runF16FBW() {
+if (geofs.animation.values.kias > 100 && geofs.aircraft.instance.id == 7) {
+flight.setAnimationValues = function (a, b) {
+    var c = geofs.aircraft.instance,
+        d = geofs.animation.values,
+        e = c.llaLocation[2] * METERS_TO_FEET,
+        g = (60 * (e - c.oldAltitude * METERS_TO_FEET)) / a;
+    c.oldAltitude = c.llaLocation[2];
+    var f = fixAngle(weather.currentWindDirection - c.htr[0]),
+        k = c.engine.rpm * c.definition.RPM2PropAS * a;
+    d.acceleration = M33.transform(M33.transpose(c.object3d._rotation), c.rigidBody.v_acceleration);
+    d.accX = d.acceleration[0];
+    d.accY = d.acceleration[1];
+    d.accZ = d.acceleration[2];
+    d.loadFactor = d.acceleration[2] / GRAVITY;
+    d.slipball = exponentialSmoothing("slipball", d.acceleration[0], 0.02);
+    d.ktas = c.trueAirSpeed * MS_TO_KNOTS;
+    d.kiasChangeRate = (d.kias - d.ktas) * a;
+    d.kias = d.ktas;
+    d.kiasUnits = d.ktas % 10;
+    d.kiasTens = d.ktas % 100;
+    d.kiasHundreds = d.ktas % 1e3;
+    d.kiasThousands = d.ktas % 1e4;
+    d.groundSpeed = c.groundSpeed;
+    d.groundSpeedKnt = c.groundSpeed * MS_TO_KNOTS;
+    d.altitudeMeters = c.llaLocation[2];
+    d.altitude = e;
+    d.haglMeters = geofs.relativeAltitude;
+    d.haglFeet = geofs.relativeAltitude * METERS_TO_FEET;
+    d.groundElevationFeet = geofs.groundElevation * METERS_TO_FEET;
+    d.verticalSpeed = g;
+    d.climbrate = g;
+    d.aoa = c.angleOfAttackDeg;
+    d.turnrate = (60 * fixAngle(c.htr[0] - d.heading)) / a;
+    d.heading = c.htr[0];
+    d.heading360 = fixAngle360(c.htr[0]);
+    d.atilt = c.htr[1];
+    d.aroll = c.htr[2];
+    d.enginesOn = c.engine.on;
+    d.engineVibration = 100 < c.engine.rpm ? Math.random() * clamp(1e3 / c.engine.rpm, 0, 1) : 0;
+    d.prop = fixAngle360(d.prop + k);
+    d.thrust = c.totalThrust;
+    d.rpm = c.engine.rpm;
+    d.throttle = controls.throttle;
+	 //controls.pitch max is 1
+    d.pitch = controls.pitch / (geofs.animation.values.kias/150);
+    d.rawPitch = controls.rawPitch;
+	 //roll stabilization?
+    d.roll = controls.roll;
+    d.yaw = controls.yaw;
+    d.rawYaw = controls.rawYaw;
+    d.trim = controls.elevatorTrim;
+    d.brakes = controls.brakes;
+    d.gearPosition = controls.gear.position;
+    d.invGearPosition = 1 - controls.gear.position;
+    d.gearTarget = controls.gear.target;
+    d.flapsValue = controls.flaps.position / controls.flaps.maxPosition;
+    d.accessoriesPosition = controls.accessories.position;
+    d.flapsPosition = controls.flaps.position;
+    d.flapsTarget = controls.flaps.target;
+    d.flapsPositionTarget = controls.flaps.positionTarget;
+    d.flapsMaxPosition = controls.flaps.maxPosition;
+    d.airbrakesPosition = controls.airbrakes.position;
+    d.optionalAnimatedPartPosition = controls.optionalAnimatedPart.position;
+    d.airbrakesTarget = controls.airbrakes.target;
+    d.parkingBrake = c.brakesOn;
+    d.groundContact = c.groundContact ? 1 : 0;
+    d.arrestingHookTension = c.arrestingCableContact ? V3.length(c.arrestingCableContact.force) : 0;
+    d.airTemp = weather.atmosphere.airTempAtAltitude;
+    d.mach = c.trueAirSpeed / (331.3 + 0.606 * weather.atmosphere.airTempAtAltitude);
+    d.machUnits = Math.floor(d.mach);
+    d.machTenth = Math.floor(10 * (d.mach % 1).toPrecision(2));
+    d.machHundredth = Math.floor(100 * (d.mach % 0.1).toPrecision(2));
+    d.altTenThousands = e % 1e5;
+    d.altThousands = e % 1e4;
+    d.altHundreds = e % 1e3;
+    d.altTens = e % 100;
+    d.altTensShift = Math.floor((e % 1e5) / 1e4);
+    d.altUnits = e % 10;
+    d.relativeWind = f;
+    d.windSpeed = weather.currentWindSpeed;
+    d.windSpeedLabel = parseInt(weather.currentWindSpeed) + " kts";
+    d.view = geofs.camera.currentView;
+    d.envelopeTemp = c.envelopeTemp;
+    d["aircraft.maxAngularVRatio"] = c.maxAngularVRatio;
+    d.rollingSpeed = c.groundContact ? c.velocityScalar : 0;
+    "free" == geofs.camera.currentModeName || "chase" == geofs.camera.currentModeName
+        ? ((c = geofs.utils.llaDistanceInMeters(geofs.camera.lla, c.llaLocation)), (d.cameraAircraftSpeed = (d.cameraAircraftDistance - c) / a), (d.cameraAircraftDistance = c))
+        : ((d.cameraAircraftSpeed = 0), (d.cameraAircraftDistance = 0));
+    d.geofsTime = b;
+    geofs.api.postMessage({ animationValues: d });
+   };
+} else if (geofs.animation.values.kias < 99 && geofs.aircraft.instance.id == 7) {
+flight.setAnimationValues = function (a, b) {
+    var c = geofs.aircraft.instance,
+        d = geofs.animation.values,
+        e = c.llaLocation[2] * METERS_TO_FEET,
+        g = (60 * (e - c.oldAltitude * METERS_TO_FEET)) / a;
+    c.oldAltitude = c.llaLocation[2];
+    var f = fixAngle(weather.currentWindDirection - c.htr[0]),
+        k = c.engine.rpm * c.definition.RPM2PropAS * a;
+    d.acceleration = M33.transform(M33.transpose(c.object3d._rotation), c.rigidBody.v_acceleration);
+    d.accX = d.acceleration[0];
+    d.accY = d.acceleration[1];
+    d.accZ = d.acceleration[2];
+    d.loadFactor = d.acceleration[2] / GRAVITY;
+    d.slipball = exponentialSmoothing("slipball", d.acceleration[0], 0.02);
+    d.ktas = c.trueAirSpeed * MS_TO_KNOTS;
+    d.kiasChangeRate = (d.kias - d.ktas) * a;
+    d.kias = d.ktas;
+    d.kiasUnits = d.ktas % 10;
+    d.kiasTens = d.ktas % 100;
+    d.kiasHundreds = d.ktas % 1e3;
+    d.kiasThousands = d.ktas % 1e4;
+    d.groundSpeed = c.groundSpeed;
+    d.groundSpeedKnt = c.groundSpeed * MS_TO_KNOTS;
+    d.altitudeMeters = c.llaLocation[2];
+    d.altitude = e;
+    d.haglMeters = geofs.relativeAltitude;
+    d.haglFeet = geofs.relativeAltitude * METERS_TO_FEET;
+    d.groundElevationFeet = geofs.groundElevation * METERS_TO_FEET;
+    d.verticalSpeed = g;
+    d.climbrate = g;
+    d.aoa = c.angleOfAttackDeg;
+    d.turnrate = (60 * fixAngle(c.htr[0] - d.heading)) / a;
+    d.heading = c.htr[0];
+    d.heading360 = fixAngle360(c.htr[0]);
+    d.atilt = c.htr[1];
+    d.aroll = c.htr[2];
+    d.enginesOn = c.engine.on;
+    d.engineVibration = 100 < c.engine.rpm ? Math.random() * clamp(1e3 / c.engine.rpm, 0, 1) : 0;
+    d.prop = fixAngle360(d.prop + k);
+    d.thrust = c.totalThrust;
+    d.rpm = c.engine.rpm;
+    d.throttle = controls.throttle;
+    d.pitch = controls.pitch;
+    d.rawPitch = controls.rawPitch;
+    d.roll = controls.roll;
+    d.yaw = controls.yaw;
+    d.rawYaw = controls.rawYaw;
+    d.trim = controls.elevatorTrim;
+    d.brakes = controls.brakes;
+    d.gearPosition = controls.gear.position;
+    d.invGearPosition = 1 - controls.gear.position;
+    d.gearTarget = controls.gear.target;
+    d.flapsValue = controls.flaps.position / controls.flaps.maxPosition;
+    d.accessoriesPosition = controls.accessories.position;
+    d.flapsPosition = controls.flaps.position;
+    d.flapsTarget = controls.flaps.target;
+    d.flapsPositionTarget = controls.flaps.positionTarget;
+    d.flapsMaxPosition = controls.flaps.maxPosition;
+    d.airbrakesPosition = controls.airbrakes.position;
+    d.optionalAnimatedPartPosition = controls.optionalAnimatedPart.position;
+    d.airbrakesTarget = controls.airbrakes.target;
+    d.parkingBrake = c.brakesOn;
+    d.groundContact = c.groundContact ? 1 : 0;
+    d.arrestingHookTension = c.arrestingCableContact ? V3.length(c.arrestingCableContact.force) : 0;
+    d.airTemp = weather.atmosphere.airTempAtAltitude;
+    d.mach = c.trueAirSpeed / (331.3 + 0.606 * weather.atmosphere.airTempAtAltitude);
+    d.machUnits = Math.floor(d.mach);
+    d.machTenth = Math.floor(10 * (d.mach % 1).toPrecision(2));
+    d.machHundredth = Math.floor(100 * (d.mach % 0.1).toPrecision(2));
+    d.altTenThousands = e % 1e5;
+    d.altThousands = e % 1e4;
+    d.altHundreds = e % 1e3;
+    d.altTens = e % 100;
+    d.altTensShift = Math.floor((e % 1e5) / 1e4);
+    d.altUnits = e % 10;
+    d.relativeWind = f;
+    d.windSpeed = weather.currentWindSpeed;
+    d.windSpeedLabel = parseInt(weather.currentWindSpeed) + " kts";
+    d.view = geofs.camera.currentView;
+    d.envelopeTemp = c.envelopeTemp;
+    d["aircraft.maxAngularVRatio"] = c.maxAngularVRatio;
+    d.rollingSpeed = c.groundContact ? c.velocityScalar : 0;
+    "free" == geofs.camera.currentModeName || "chase" == geofs.camera.currentModeName
+        ? ((c = geofs.utils.llaDistanceInMeters(geofs.camera.lla, c.llaLocation)), (d.cameraAircraftSpeed = (d.cameraAircraftDistance - c) / a), (d.cameraAircraftDistance = c))
+        : ((d.cameraAircraftSpeed = 0), (d.cameraAircraftDistance = 0));
+    d.geofsTime = b;
+    geofs.api.postMessage({ animationValues: d });
+   };
+} else {
+flight.setAnimationValues = function (a, b) {
+    var c = geofs.aircraft.instance,
+        d = geofs.animation.values,
+        e = c.llaLocation[2] * METERS_TO_FEET,
+        g = (60 * (e - c.oldAltitude * METERS_TO_FEET)) / a;
+    c.oldAltitude = c.llaLocation[2];
+    var f = fixAngle(weather.currentWindDirection - c.htr[0]),
+        k = c.engine.rpm * c.definition.RPM2PropAS * a;
+    d.acceleration = M33.transform(M33.transpose(c.object3d._rotation), c.rigidBody.v_acceleration);
+    d.accX = d.acceleration[0];
+    d.accY = d.acceleration[1];
+    d.accZ = d.acceleration[2];
+    d.loadFactor = d.acceleration[2] / GRAVITY;
+    d.slipball = exponentialSmoothing("slipball", d.acceleration[0], 0.02);
+    d.ktas = c.trueAirSpeed * MS_TO_KNOTS;
+    d.kiasChangeRate = (d.kias - d.ktas) * a;
+    d.kias = d.ktas;
+    d.kiasUnits = d.ktas % 10;
+    d.kiasTens = d.ktas % 100;
+    d.kiasHundreds = d.ktas % 1e3;
+    d.kiasThousands = d.ktas % 1e4;
+    d.groundSpeed = c.groundSpeed;
+    d.groundSpeedKnt = c.groundSpeed * MS_TO_KNOTS;
+    d.altitudeMeters = c.llaLocation[2];
+    d.altitude = e;
+    d.haglMeters = geofs.relativeAltitude;
+    d.haglFeet = geofs.relativeAltitude * METERS_TO_FEET;
+    d.groundElevationFeet = geofs.groundElevation * METERS_TO_FEET;
+    d.verticalSpeed = g;
+    d.climbrate = g;
+    d.aoa = c.angleOfAttackDeg;
+    d.turnrate = (60 * fixAngle(c.htr[0] - d.heading)) / a;
+    d.heading = c.htr[0];
+    d.heading360 = fixAngle360(c.htr[0]);
+    d.atilt = c.htr[1];
+    d.aroll = c.htr[2];
+    d.enginesOn = c.engine.on;
+    d.engineVibration = 100 < c.engine.rpm ? Math.random() * clamp(1e3 / c.engine.rpm, 0, 1) : 0;
+    d.prop = fixAngle360(d.prop + k);
+    d.thrust = c.totalThrust;
+    d.rpm = c.engine.rpm;
+    d.throttle = controls.throttle;
+    d.pitch = controls.pitch;
+    d.rawPitch = controls.rawPitch;
+    d.roll = controls.roll;
+    d.yaw = controls.yaw;
+    d.rawYaw = controls.rawYaw;
+    d.trim = controls.elevatorTrim;
+    d.brakes = controls.brakes;
+    d.gearPosition = controls.gear.position;
+    d.invGearPosition = 1 - controls.gear.position;
+    d.gearTarget = controls.gear.target;
+    d.flapsValue = controls.flaps.position / controls.flaps.maxPosition;
+    d.accessoriesPosition = controls.accessories.position;
+    d.flapsPosition = controls.flaps.position;
+    d.flapsTarget = controls.flaps.target;
+    d.flapsPositionTarget = controls.flaps.positionTarget;
+    d.flapsMaxPosition = controls.flaps.maxPosition;
+    d.airbrakesPosition = controls.airbrakes.position;
+    d.optionalAnimatedPartPosition = controls.optionalAnimatedPart.position;
+    d.airbrakesTarget = controls.airbrakes.target;
+    d.parkingBrake = c.brakesOn;
+    d.groundContact = c.groundContact ? 1 : 0;
+    d.arrestingHookTension = c.arrestingCableContact ? V3.length(c.arrestingCableContact.force) : 0;
+    d.airTemp = weather.atmosphere.airTempAtAltitude;
+    d.mach = c.trueAirSpeed / (331.3 + 0.606 * weather.atmosphere.airTempAtAltitude);
+    d.machUnits = Math.floor(d.mach);
+    d.machTenth = Math.floor(10 * (d.mach % 1).toPrecision(2));
+    d.machHundredth = Math.floor(100 * (d.mach % 0.1).toPrecision(2));
+    d.altTenThousands = e % 1e5;
+    d.altThousands = e % 1e4;
+    d.altHundreds = e % 1e3;
+    d.altTens = e % 100;
+    d.altTensShift = Math.floor((e % 1e5) / 1e4);
+    d.altUnits = e % 10;
+    d.relativeWind = f;
+    d.windSpeed = weather.currentWindSpeed;
+    d.windSpeedLabel = parseInt(weather.currentWindSpeed) + " kts";
+    d.view = geofs.camera.currentView;
+    d.envelopeTemp = c.envelopeTemp;
+    d["aircraft.maxAngularVRatio"] = c.maxAngularVRatio;
+    d.rollingSpeed = c.groundContact ? c.velocityScalar : 0;
+    "free" == geofs.camera.currentModeName || "chase" == geofs.camera.currentModeName
+        ? ((c = geofs.utils.llaDistanceInMeters(geofs.camera.lla, c.llaLocation)), (d.cameraAircraftSpeed = (d.cameraAircraftDistance - c) / a), (d.cameraAircraftDistance = c))
+        : ((d.cameraAircraftSpeed = 0), (d.cameraAircraftDistance = 0));
+    d.geofsTime = b;
+    geofs.api.postMessage({ animationValues: d });
+   };
+}
+}
+f16Int = setInterval(function(){runF16FBW()},1000)
+
 
 function controlsLimiters() {
    if (geofs.animation.values.groundContact == 0 && geofs.animation.values.airbrakesTarget == 1) {
