@@ -63,6 +63,8 @@ if (geofs.aircraft.instance.id == 18){
 	geofs.aircraft.instance.definition.parts[51].animations[2].rotationMethod = function(a) {
       this._rotation = M33.rotationZ(this._rotation, a)
    };
+	geofs.aircraft.instance.definition.parts[48].animations[0].gt = 9100
+	geofs.aircraft.instance.definition.parts[53].animations[0].gt = 9100
 }
 //fix Pitts S-1 airspeed indicator
 if (geofs.aircraft.instance.id == 8) {
@@ -123,6 +125,16 @@ if (geofs.aircraft.instance.id == 2844) {
 	geofs.aircraft.instance.definition.parts[25].animations[0].ratio = 2.5;
 	geofs.aircraft.instance.definition.parts[25].animations[1].ratio = -2.5;
 	audio.init(geofs.aircraft.instance.definition.sounds);
+}
+//F22 fixes
+if (geofs.aircraft.instance.id == 2857) {
+geofs.aircraft.instance.definition.parts[7].area = 10
+geofs.aircraft.instance.definition.parts[8].area = 10
+geofs.aircraft.instance.definition.parts[14].liftFactor = 10
+geofs.aircraft.instance.definition.parts[15].liftFactor = 10
+}
+if (geofs.aircraft.instance.id == 2988) {
+   geofs.aircraft.instance.definition.parts[27].area = 5
 }
 //Fixing the realism of the F-15
 if (geofs.aircraft.instance.id == 3591) {
@@ -321,9 +333,10 @@ audio.impl.html5.playFile(fetchAircraftSoundsLow(e.aircraft))
 };
 multiplayerSoundInterval = setInterval(function(){computeSounds()},6000)
 
-//experimental fly-by-wire for the F-16
-function runF16FBW() {
+
+function runFBW() {
 if (geofs.animation.values.kias > 100 && geofs.aircraft.instance.id == 7) {
+console.log("F16 FBW in effect")
 flight.setAnimationValues = function (a, b) {
     var c = geofs.aircraft.instance,
         d = geofs.animation.values,
@@ -413,8 +426,9 @@ flight.setAnimationValues = function (a, b) {
         : ((d.cameraAircraftSpeed = 0), (d.cameraAircraftDistance = 0));
     d.geofsTime = b;
     geofs.api.postMessage({ animationValues: d });
-   };
-} else if (geofs.animation.values.kias < 99 && geofs.aircraft.instance.id == 7) {
+}
+   } else if (geofs.animation.values.kias < 99 && geofs.aircraft.instance.id == 7) {
+console.log("F16 FBW disabled")
 flight.setAnimationValues = function (a, b) {
     var c = geofs.aircraft.instance,
         d = geofs.animation.values,
@@ -504,6 +518,7 @@ flight.setAnimationValues = function (a, b) {
     geofs.api.postMessage({ animationValues: d });
    };
 } else {
+console.log("No FBW")
 flight.setAnimationValues = function (a, b) {
     var c = geofs.aircraft.instance,
         d = geofs.animation.values,
@@ -594,7 +609,7 @@ flight.setAnimationValues = function (a, b) {
    };
 }
 }
-f16Int = setInterval(function(){runF16FBW()},1000)
+fbwInt = setInterval(function(){runFBW()},1000)
 
 
 function controlsLimiters() {
