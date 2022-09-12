@@ -53,7 +53,7 @@ geofs.aircraft.instance.engines[0].afterBurnerThrust = 87000
 geofs.aircraft.instance.engines[1].thrust = 50000
 geofs.aircraft.instance.engines[1].afterBurnerThrust = 87000
 //Maintaining 1:1 TWR
-geofs.aircraft.instance.definition.mass = 17700
+geofs.aircraft.instance.definition.mass = 17000
 //Adjusting drag to keep a top speed of Mach 1.7
 geofs.aircraft.instance.definition.dragFactor = 0.9
    }
