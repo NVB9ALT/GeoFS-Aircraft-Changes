@@ -1,3 +1,5 @@
+//NOTE: This only works for the flight model. It does NOT change the 3d model. I'm working on this in my Addon Aircraft and Parts repo.
+
 //naming the thing
 document.querySelectorAll('[data-aircraft]').forEach(function(e){
    var elemName = e.outerText;
