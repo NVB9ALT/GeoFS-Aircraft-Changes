@@ -43,8 +43,13 @@ if (geofs.aircraft.instance.id == 7) {
       this._rotation = M33.rotationX(this._rotation, a)
    };
 };
-//Su-35 gets thrust vectoring on the yaw axis
+//Su-35 gets thrust vectoring on the yaw axis and better physics
 if (geofs.aircraft.instance.id == 18){
+geofs.aircraft.instance.definition.parts[3].area = 15
+geofs.aircraft.instance.definition.parts[4].area = 15
+geofs.aircraft.instance.definition.parts[2].area = 17
+geofs.aircraft.instance.definition.parts[11].area = 0.069
+
    geofs.aircraft.instance.definition.parts[46].animations[2] = {};
 	geofs.aircraft.instance.definition.parts[46].animations[2].type = "rotate";
 	geofs.aircraft.instance.definition.parts[46].animations[2].axis = "Z";
