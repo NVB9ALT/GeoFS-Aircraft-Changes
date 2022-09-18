@@ -341,7 +341,6 @@ multiplayerSoundInterval = setInterval(function(){computeSounds()},6000)
 
 function runFBW() {
 if (geofs.animation.values.kias > 100 && geofs.aircraft.instance.id == 7) {
-console.log("F16 FBW in effect")
 flight.setAnimationValues = function (a, b) {
     var c = geofs.aircraft.instance,
         d = geofs.animation.values,
@@ -433,7 +432,6 @@ flight.setAnimationValues = function (a, b) {
     geofs.api.postMessage({ animationValues: d });
 }
    } else if (geofs.animation.values.kias < 99 && geofs.aircraft.instance.id == 7) {
-console.log("F16 FBW disabled")
 flight.setAnimationValues = function (a, b) {
     var c = geofs.aircraft.instance,
         d = geofs.animation.values,
@@ -523,7 +521,6 @@ flight.setAnimationValues = function (a, b) {
     geofs.api.postMessage({ animationValues: d });
    };
 } else {
-console.log("No FBW")
 flight.setAnimationValues = function (a, b) {
     var c = geofs.aircraft.instance,
         d = geofs.animation.values,
