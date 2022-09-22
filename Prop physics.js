@@ -3,7 +3,6 @@ let engtorquemp = 0;
 let elevtorquemp = 0;
 let ailtorquemp = 0;
 let rudtorquemp = 0;
-function checkAircraft() {
 if (geofs.aircraft.instance.id == 21 || geofs.aircraft.instance.id == 2 || geofs.aircraft.instance.id == 2808 || geofs.aircraft.instance.id == 1 || geofs.aircraft.instance.id == 8 || geofs.aircraft.instance.id == 12 || geofs.aircraft.instance.id == 13 || geofs.aircraft.instance.id == 40 || geofs.aircraft.instance.id == 1069 || geofs.aircraft.instance.id == 2750)  {
    if (geofs.pause == 0) {
 //basic maths to figure out what the engine torque is, then apply it.
@@ -64,7 +63,3 @@ function doForces() {
   sideWashAndPfactor();
 }
   }
-}
-checkPropInterval = setInterval(function(){
-   checkAircraft()
-}, 10);
