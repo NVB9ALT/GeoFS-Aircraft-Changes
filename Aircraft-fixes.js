@@ -188,14 +188,9 @@ if (geofs.aircraft.instance.id == 4172) {
 	geofs.aircraft.instance.definition.parts[7].animations[0].ratio = 23;
 	geofs.aircraft.instance.definition.parts[18].animations[0].ratio = -23;
 	geofs.aircraft.instance.definition.parts[19].animations[0].ratio = -23;
-	//Fix cockpit HUD scale
-	geofs.aircraft.instance.definition.instruments.hud.cockpit.scale = 0.5;
 	//Envelope protection
 	if (geofs.animation.values.mach >= 1.6) {
-	   controls.throttle = 0.94
-	};
-	if (geofs.animation.values.accZ >= 90 || geofs.animation.values.aoa >= 20) {
-	   
+	   controls.throttle = 0.97
 	};
    }
 //Minor Corsair improvement - tricky startup
