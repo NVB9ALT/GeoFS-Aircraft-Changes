@@ -201,7 +201,7 @@ if (geofs.aircraft.instance.id == 4172) {
 //Minor Corsair improvement - tricky startup
 if (geofs.aircraft.instance.id == 4251) {
    geofs.aircraft.instance.definition.parts[20].area = 5
-   if (geofs.animation.values.rpm < 1000 && geofs.animation.values.throttle < 0.08) {
+   if (geofs.animation.values.rpm < 900 && geofs.animation.values.throttle < 0.08) {
 geofs.aircraft.instance.stopEngine()
 	}
 }
