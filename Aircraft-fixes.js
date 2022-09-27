@@ -610,17 +610,21 @@ fbwInt = setInterval(function(){runFBW()},1000)
 
 
 function controlsLimiters() {
+if (geofs.aircraft.instance.id != 11 && geofs.aircraft.instance.id != 2752 && geofs.aircraft.instance.id != 2726 && geofs.aircraft.instance.id != 2988) {
    if (geofs.animation.values.groundContact == 0 && geofs.animation.values.airbrakesTarget == 1) {
 controls.airbrakes.target = 0.25
 	};
 	if (geofs.animation.values.groundContact == 1 && controls.airbrakes.target == 0.25) {
 controls.airbrakes.target = 1
+controls.setters.setAirbrakes.set();
+controls.setters.setAirbrakes.set();
 	};
    if (geofs.animation.values.groundContact == 1 && controls.airbrakes.target == 0) {
       if (controls.airbrakes.target == 0.25) {
 controls.airbrakes.target = 0
       };
 	};
+   }
 };
 resetSplrInterval = setInterval(function(){controlsLimiters()},100);
 
