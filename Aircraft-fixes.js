@@ -31,13 +31,15 @@ if (geofs.aircraft.instance.id == 7) {
       this._rotation = M33.rotationX(this._rotation, a)
    };
    geofs.aircraft.instance.definition.parts[14].animations[0].ratio = 0.069;
-   geofs.aircraft.instance.definition.parts[14].animations[0].ratio = 0.069;
+   geofs.aircraft.instance.definition.parts[13].animations[0].ratio = 0.069;
 	
 	geofs.aircraft.instance.definition.parts[12].animations[1] = {};
 	geofs.aircraft.instance.definition.parts[12].animations[1].type = "rotate";
 	geofs.aircraft.instance.definition.parts[12].animations[1].axis = "X";
 	geofs.aircraft.instance.definition.parts[12].animations[1].value = "aoa";
-	geofs.aircraft.instance.definition.parts[12].animations[1].ratio = -0.5;
+	geofs.aircraft.instance.definition.parts[12].animations[1].min = 1;
+	geofs.aircraft.instance.definition.parts[12].animations[1].max = 0;
+	geofs.aircraft.instance.definition.parts[12].animations[1].ratio = -2;
 	geofs.aircraft.instance.definition.parts[12].animations[1].currentValue = null;
 	geofs.aircraft.instance.definition.parts[12].animations[1].rotationMethod = function(a) {
       this._rotation = M33.rotationX(this._rotation, a)
@@ -54,7 +56,7 @@ geofs.aircraft.instance.definition.parts[11].area = 0.069
 	geofs.aircraft.instance.definition.parts[46].animations[2].type = "rotate";
 	geofs.aircraft.instance.definition.parts[46].animations[2].axis = "Z";
 	geofs.aircraft.instance.definition.parts[46].animations[2].value = "roll";
-	geofs.aircraft.instance.definition.parts[46].animations[2].ratio = -15;
+	geofs.aircraft.instance.definition.parts[46].animations[2].ratio = -10;
 	geofs.aircraft.instance.definition.parts[46].animations[2].currentValue = null;
 	geofs.aircraft.instance.definition.parts[46].animations[2].rotationMethod = function(a) {
       this._rotation = M33.rotationZ(this._rotation, a)
@@ -63,7 +65,7 @@ geofs.aircraft.instance.definition.parts[11].area = 0.069
 	geofs.aircraft.instance.definition.parts[51].animations[2].type = "rotate";
 	geofs.aircraft.instance.definition.parts[51].animations[2].axis = "Z";
 	geofs.aircraft.instance.definition.parts[51].animations[2].value = "roll";
-	geofs.aircraft.instance.definition.parts[51].animations[2].ratio = -15;
+	geofs.aircraft.instance.definition.parts[51].animations[2].ratio = -10;
 	geofs.aircraft.instance.definition.parts[51].animations[2].currentValue = null;
 	geofs.aircraft.instance.definition.parts[51].animations[2].rotationMethod = function(a) {
       this._rotation = M33.rotationZ(this._rotation, a)
@@ -133,10 +135,11 @@ if (geofs.aircraft.instance.id == 2844) {
 }
 //F22 fixes
 if (geofs.aircraft.instance.id == 2857) {
-geofs.aircraft.instance.definition.parts[7].area = 10
-geofs.aircraft.instance.definition.parts[8].area = 10
+geofs.aircraft.instance.definition.parts[7].area = 20
+geofs.aircraft.instance.definition.parts[8].area = 20
 geofs.aircraft.instance.definition.parts[14].liftFactor = 10
 geofs.aircraft.instance.definition.parts[15].liftFactor = 10
+geofs.aircraft.instance.definition.parts[11].area = 0.5
 }
 if (geofs.aircraft.instance.id == 2988) {
    geofs.aircraft.instance.definition.parts[27].area = 5
