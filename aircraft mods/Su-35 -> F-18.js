@@ -1,10 +1,8 @@
-//NOTE: This only works for the flight model. It does NOT change the 3d model. I'm working on this in my Addon Aircraft and Parts repo.
-
 //naming the thing
 document.querySelectorAll('[data-aircraft]').forEach(function(e){
    var elemName = e.outerText;
     if (elemName.includes("Su-35")) {
-       e.innerHTML = e.innerHTML + " (HoHoHo is HARV)"
+       e.innerHTML = '<li data-aircraft="18"><img data-deferredsrc="images/planes/su35.png">Sukhoi Su-35<div data-aircraft="18" data-livery="0"><img data-deferredsrc="images/planes/su35_0.png">Akula 35</div><div data-aircraft="18" data-livery="1"><img data-deferredsrc="images/planes/su35_1.png">Russia Bort 01</div><div data-aircraft="18" data-livery="2"><img data-deferredsrc="images/planes/su35_2.png">Russia Bort 06</div><div data-aircraft="18" data-livery="3"><img data-deferredsrc="images/planes/su35_3.png">Russia Bort 901</div><div data-aircraft="18" data-livery="4"><img data-deferredsrc="https://w7.pngwing.com/pngs/871/313/png-transparent-boeing-f-a-18e-f-super-hornet-mcdonnell-douglas-f-a-18-hornet-battlefield-3-rogerson-aircraft-corporation-airplane-boeing-767-video-game-fighter-aircraft-airplane.png">F/A-18C Hornet</div></li>'
     }
 });
 //the actual implementation lol:
@@ -58,6 +56,10 @@ geofs.aircraft.instance.engines[1].afterBurnerThrust = 87000
 geofs.aircraft.instance.definition.mass = 17000
 //Adjusting drag to keep a top speed of Mach 1.7
 geofs.aircraft.instance.definition.dragFactor = 0.9
-   }
+setTimeout(() => {
+   geofs.debug.isFA18 = 1
+},10000)
+   } else {
+geofs.debug.isFA18 = 0
 }
 HARVINTERVAL = setInterval(function(){runHARV()},100)
