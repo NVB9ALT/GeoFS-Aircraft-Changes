@@ -43,6 +43,8 @@ setTimeout(() => {
 setTimeout(() => {
    	 geofs.aircraft.instance.definition.parts[0].animations[0].value = "rpm"
 	 geofs.aircraft.instance.definition.parts[0].animations[0].gt = -1
+   	 geofs.aircraft.instance.definition.cockpitSetup.parts[0].animations[0].value = "rpm"
+	 geofs.aircraft.instance.definition.cockpitSetup.parts[0].animations[0].gt = -1
 	 geofs.aircraft.instance.definition.parts[50].animations[0].gt = 100000
 	 geofs.aircraft.instance.definition.parts[55].animations[0].gt = 100000
 },10000)
