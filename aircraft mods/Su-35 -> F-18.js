@@ -26,27 +26,6 @@ geofs.aircraft.instance.definition.parts[4].stallIncidence = 25
 geofs.aircraft.instance.definition.parts[4].zeroLiftIncidence = 50
 //Tuning the stabilizer area
 geofs.aircraft.instance.definition.parts[11].area = 3
-//FBW G-prot
-geofs.aircraft.instance.definition.parts[12].animations[2] = {};
-	geofs.aircraft.instance.definition.parts[12].animations[2].type = "rotate";
-	geofs.aircraft.instance.definition.parts[12].animations[2].axis = "X";
-	geofs.aircraft.instance.definition.parts[12].animations[2].value = "accZ";
-	geofs.aircraft.instance.definition.parts[12].animations[2].ratio = -5;
-	geofs.aircraft.instance.definition.parts[12].animations[2].gt = 90;
-	geofs.aircraft.instance.definition.parts[12].animations[2].currentValue = null;
-	geofs.aircraft.instance.definition.parts[12].animations[2].rotationMethod = function(a) {
-      this._rotation = M33.rotationX(this._rotation, a)
-   };
-geofs.aircraft.instance.definition.parts[13].animations[2] = {}
-	geofs.aircraft.instance.definition.parts[13].animations[2].type = "rotate";
-	geofs.aircraft.instance.definition.parts[13].animations[2].axis = "X";
-	geofs.aircraft.instance.definition.parts[13].animations[2].value = "accZ";
-	geofs.aircraft.instance.definition.parts[13].animations[2].ratio = -5;
-	geofs.aircraft.instance.definition.parts[13].animations[2].gt = 90;
-	geofs.aircraft.instance.definition.parts[13].animations[2].currentValue = null;
-	geofs.aircraft.instance.definition.parts[13].animations[2].rotationMethod = function(a) {
-      this._rotation = M33.rotationX(this._rotation, a)
-   };
 //Adjusting engine power
 geofs.aircraft.instance.engines[0].thrust = 50000
 geofs.aircraft.instance.engines[0].afterBurnerThrust = 87000
@@ -56,6 +35,7 @@ geofs.aircraft.instance.engines[1].afterBurnerThrust = 87000
 geofs.aircraft.instance.definition.mass = 17000
 //Adjusting drag to keep a top speed of Mach 1.7
 geofs.aircraft.instance.definition.dragFactor = 0.9
+ui.notification.show("Please wait ten seconds for model to load.")
 setTimeout(() => {
    geofs.addonAircraft.isFA18 = 1
 },5000)
@@ -67,6 +47,7 @@ setTimeout(() => {
 },10000)
    } else {
 geofs.addonAircraft.isFA18 = 0
+
    }
 }
 HARVINTERVAL = setInterval(function(){runHARV()},100)
