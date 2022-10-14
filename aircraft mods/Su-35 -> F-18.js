@@ -57,10 +57,10 @@ geofs.aircraft.instance.definition.mass = 17000
 //Adjusting drag to keep a top speed of Mach 1.7
 geofs.aircraft.instance.definition.dragFactor = 0.9
 setTimeout(() => {
-   geofs.debug.isFA18 = 1
+   geofs.addonAircraft.isFA18 = 1
 },10000)
    } else {
-geofs.debug.isFA18 = 0
+geofs.addonAircraft.isFA18 = 0
    }
 }
 HARVINTERVAL = setInterval(function(){runHARV()},100)
