@@ -58,6 +58,12 @@ geofs.aircraft.instance.definition.mass = 17000
 geofs.aircraft.instance.definition.dragFactor = 0.9
 setTimeout(() => {
    geofs.addonAircraft.isFA18 = 1
+},5000)
+setTimeout(() => {
+   	 geofs.aircraft.instance.definition.parts[0].animations[0].value = "rpm"
+	 geofs.aircraft.instance.definition.parts[0].animations[0].gt = -1
+	 geofs.aircraft.instance.definition.parts[50].animations[0].gt = 100000
+	 geofs.aircraft.instance.definition.parts[55].animations[0].gt = 100000
 },10000)
    } else {
 geofs.addonAircraft.isFA18 = 0
