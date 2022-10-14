@@ -61,5 +61,6 @@ setTimeout(() => {
 },10000)
    } else {
 geofs.debug.isFA18 = 0
+   }
 }
 HARVINTERVAL = setInterval(function(){runHARV()},100)
