@@ -35,7 +35,6 @@ geofs.aircraft.instance.engines[1].afterBurnerThrust = 87000
 geofs.aircraft.instance.definition.mass = 17000
 //Adjusting drag to keep a top speed of Mach 1.7
 geofs.aircraft.instance.definition.dragFactor = 0.9
-ui.notification.show("Please wait ten seconds for model to load.")
 setTimeout(() => {
    geofs.addonAircraft.isFA18 = 1
 },5000)
