@@ -1,4 +1,4 @@
-//Stuff to do: add airbrake, double-check physics, make it a seperate button in the aircraft menu
+//Stuff to do: add airbrake, double-check physics, make it a seperate button in the aircraft menu, F-15 cockpit?
 
 //naming the thing
 document.querySelectorAll('[data-aircraft]').forEach(function(e){
