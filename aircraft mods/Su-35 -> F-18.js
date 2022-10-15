@@ -1,4 +1,4 @@
-//Stuff to do:double-check physics, make it a seperate button in the aircraft menu, multiplayer visibility?
+//Stuff to do: double-check physics and speedbrake, switch out the tires for the ones on the F-16, make it a seperate button in the aircraft menu, multiplayer visibility?
 
 //naming the thing
 document.querySelectorAll('[data-aircraft]').forEach(function(e){
@@ -36,8 +36,6 @@ geofs.aircraft.instance.engines[1].thrust = 50000
 geofs.aircraft.instance.engines[1].afterBurnerThrust = 87000
 //Maintaining 1:1 TWR
 geofs.aircraft.instance.definition.mass = 17000
-//Adjusting drag to keep a top speed of Mach 1.7
-geofs.aircraft.instance.definition.dragFactor = 0.9
 //Adding the airbrake
 geofs.aircraft.instance.definition.airbrakesTravelTime = 1;
 geofs.aircraft.instance.definition.instruments.spoilers = "";
