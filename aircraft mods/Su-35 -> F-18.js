@@ -1,4 +1,4 @@
-//Stuff to do: double-check physics and speedbrake, switch out the tires for the ones on the F-16, make it a seperate button in the aircraft menu, multiplayer visibility?
+//Stuff to do: switch out the tires for the ones on the F-16, make it a seperate button in the aircraft menu, multiplayer visibility?
 
 //naming the thing
 document.querySelectorAll('[data-aircraft]').forEach(function(e){
@@ -36,6 +36,30 @@ geofs.aircraft.instance.engines[1].thrust = 50000
 geofs.aircraft.instance.engines[1].afterBurnerThrust = 87000
 //Maintaining 1:1 TWR
 geofs.aircraft.instance.definition.mass = 17000
+//Replacing the tires lol
+geofs.aircraft.instance.definition.contactProperties = {
+        "wheel": {
+        	"frictionCoef": 2,
+        	"dynamicFriction": 0.01,
+        	"rollingFriction": 0.00001,
+            "damping": 1
+        },
+        "frame": {
+        	"frictionCoef": 2,
+        	"dynamicFriction": 0.01,
+            "damping": 1
+        },
+	    "airfoil": {
+        	"frictionCoef": 2,
+        	"dynamicFriction": 0.01,
+            "damping": 1
+        },
+        "hook": {
+            "frictionCoef": 2,
+            "dynamicFriction": 0.01,
+            "damping": 1
+        }
+    };
 //Adding the airbrake
 geofs.aircraft.instance.definition.airbrakesTravelTime = 1;
 geofs.aircraft.instance.definition.instruments.spoilers = "";
@@ -52,7 +76,7 @@ if (geofs.f18instruments == 0) {
    instruments.init(geofs.aircraft.instance.setup.instruments)
    geofs.f18instruments = 1
 }
-if (geofs.animation.values.airbrakeTarget == 1) {
+if (geofs.animation.values.airbrakeTarget > 0) {
    geofs.aircraft.instance.definition.dragFactor = 6
 } else {
    geofs.aircraft.instance.definition.dragFactor = 0.9
@@ -65,7 +89,6 @@ setTimeout(() => {
 	 geofs.aircraft.instance.definition.parts[0].animations[0].gt = -1
    	 geofs.aircraft.instance.cockpitSetup.parts[0].animations[0].value = "rpm"
 	 geofs.aircraft.instance.cockpitSetup.parts[0].animations[0].gt = -1
-	 delete geofs.aircraft.instance.cockpitSetup.parts[1].parent
 	 geofs.aircraft.instance.definition.parts[50].animations[0].gt = 100000
 	 geofs.aircraft.instance.definition.parts[55].animations[0].gt = 100000
 },10000)
