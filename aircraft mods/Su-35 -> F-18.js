@@ -45,6 +45,11 @@ if (geofs.f18instruments == 0) {
    instruments.init(geofs.aircraft.instance.setup.instruments)
    geofs.f18instruments = 1
 }
+if (geofs.animation.values.airbrakeTarget == 1) {
+   geofs.aircraft.instance.definition.dragFactor = 6
+} else {
+   geofs.aircraft.instance.definition.dragFactor = 0.9
+}
 setTimeout(() => {
    geofs.addonAircraft.isFA18 = 1
 },5000)
