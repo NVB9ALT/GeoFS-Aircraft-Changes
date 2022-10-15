@@ -43,7 +43,7 @@ geofs.aircraft.instance.definition.airbrakesTravelTime = 1;
 geofs.aircraft.instance.definition.instruments.spoilers = "";
 geofs.aircraft.instance.definition.instruments.correctHUD = {
             "cockpit": {
-                "position": [0, 8.3, 1.1],
+                "position": [-0.01, 8.3, 1.2],
                 "scale": 0.5
             },
             "animations": [
