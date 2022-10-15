@@ -41,6 +41,15 @@ geofs.aircraft.instance.definition.dragFactor = 0.9
 //Adding the airbrake
 geofs.aircraft.instance.definition.airbrakesTravelTime = 1;
 geofs.aircraft.instance.definition.instruments.spoilers = "";
+geofs.aircraft.instance.definition.instruments.correctHUD = {
+            "cockpit": {
+                "position": [0, 8.3, 1.1],
+                "scale": 0.5
+            },
+            "animations": [
+                {"value": "view", "type": "show", "eq": "cockpit"}
+            ]
+	}
 if (geofs.f18instruments == 0) {
    instruments.init(geofs.aircraft.instance.setup.instruments)
    geofs.f18instruments = 1
