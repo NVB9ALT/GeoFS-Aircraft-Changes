@@ -76,7 +76,7 @@ if (geofs.f18instruments == 0) {
    instruments.init(geofs.aircraft.instance.setup.instruments)
    geofs.f18instruments = 1
 }
-if (geofs.animation.values.airbrakeTarget > 0) {
+if (geofs.animation.values.airbrakesTarget > 0) {
    geofs.aircraft.instance.definition.dragFactor = 6
 } else {
    geofs.aircraft.instance.definition.dragFactor = 0.9
