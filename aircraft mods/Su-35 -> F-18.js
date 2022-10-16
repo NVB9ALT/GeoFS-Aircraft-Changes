@@ -1,4 +1,4 @@
-//Stuff to do: add a moving stick, make it a seperate button in the aircraft menu, multiplayer visibility?
+//Stuff to do: make it a seperate button in the aircraft menu, multiplayer visibility?
 
 //naming the thing
 document.querySelectorAll('[data-aircraft]').forEach(function(e){
