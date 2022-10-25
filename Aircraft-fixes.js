@@ -107,10 +107,6 @@ if (geofs.aircraft.instance.id == 2581) {
    geofs.aircraft.instance.definition.parts[2].area = 20
 	geofs.aircraft.instance.definition.parts[3].area = 20
       }
-	//Wings swing out when high AoA
-	if (geofs.animation.values.aoa >= 7.5 && geofs.animation.values.aoa <= 20 && geofs.animation.values.kias >= 300) {
-	   controls.optionalAnimatedPart.target = geofs.animation.values.aoa / 20
-   }
 }
 //Spitfire zeroThrustAltitude instead of zeroRPMAltitude, keeping the RPMs from dropping obscenely low
 if (geofs.aircraft.instance.id == 2808) {
