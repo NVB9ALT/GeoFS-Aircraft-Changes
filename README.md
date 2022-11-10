@@ -2,7 +2,7 @@
 
 This changes a few aircraft to have things like reverse thrust or better performance.
 
-To run this, copy *Aircraft changes.js* and paste it into the console.
+To run this, copy *Aircraft improvements.js* and paste it into the console.
 
 To run this as a bookmarklet, you follow the following procedure:
 
