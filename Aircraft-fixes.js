@@ -51,7 +51,11 @@ geofs.aircraft.instance.definition.parts[3].area = 15
 geofs.aircraft.instance.definition.parts[4].area = 15
 geofs.aircraft.instance.definition.parts[2].area = 17
 geofs.aircraft.instance.definition.parts[11].area = 0.069
-
+if (geofs.animation.values.accZ >= 60) {
+   geofs.aircraft.instance.definition.dragFactor = 5
+} else {
+   geofs.aircraft.instance.definition.dragFactor = 1.5
+}
    geofs.aircraft.instance.definition.parts[46].animations[2] = {};
 	geofs.aircraft.instance.definition.parts[46].animations[2].type = "rotate";
 	geofs.aircraft.instance.definition.parts[46].animations[2].axis = "Z";
