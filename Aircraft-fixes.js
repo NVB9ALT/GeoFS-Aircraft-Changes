@@ -51,7 +51,7 @@ geofs.aircraft.instance.definition.parts[3].area = 15
 geofs.aircraft.instance.definition.parts[4].area = 15
 geofs.aircraft.instance.definition.parts[2].area = 17
 geofs.aircraft.instance.definition.parts[11].area = 0.069
-if (geofs.animation.values.accZ >= 60) {
+if (geofs.animation.values.accZ >= 40) {
    geofs.aircraft.instance.definition.dragFactor = 5
 } else {
    geofs.aircraft.instance.definition.dragFactor = 1.5
