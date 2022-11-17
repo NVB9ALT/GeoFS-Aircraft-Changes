@@ -1,5 +1,7 @@
 function realismify() {
 var notifiedTrue1 = new Boolean(0)
+geofs.addonAircraft = {}
+geofs.addonAircraft.isMig21 = 0
 function fixAircraft() {
 //Fixing the XB-70's canards
 if (geofs.aircraft.instance.id == 2948) {
@@ -7,7 +9,7 @@ geofs.aircraft.instance.definition.parts[69].animations[0].ratio = 25
 geofs.aircraft.instance.definition.parts[70].animations[0].ratio = 25
 };
 //F16 automatic high-AOA slats deploy
-if (geofs.aircraft.instance.id == 7) {
+if (geofs.aircraft.instance.id == 7 && geofs.addonAircraft.isMig21 == 0) {
    geofs.aircraft.instance.definition.parts[13].animations[1] = {};
 	geofs.aircraft.instance.definition.parts[13].animations[1].type = "rotate";
 	geofs.aircraft.instance.definition.parts[13].animations[1].axis = "X";
