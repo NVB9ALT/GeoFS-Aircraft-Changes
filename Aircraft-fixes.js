@@ -9,7 +9,7 @@ geofs.aircraft.instance.definition.parts[69].animations[0].ratio = 25
 geofs.aircraft.instance.definition.parts[70].animations[0].ratio = 25
 };
 //F16 automatic high-AOA slats deploy
-if (geofs.aircraft.instance.id == 7 && geofs.addonAircraft.isMig21 == 0) {
+if (geofs.aircraft.instance.id == 7 && geofs.addonAircraft.isMiG21 == 0) {
    geofs.aircraft.instance.definition.parts[13].animations[1] = {};
 	geofs.aircraft.instance.definition.parts[13].animations[1].type = "rotate";
 	geofs.aircraft.instance.definition.parts[13].animations[1].axis = "X";
