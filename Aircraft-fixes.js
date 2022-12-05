@@ -1,7 +1,7 @@
 function realismify() {
 var notifiedTrue1 = new Boolean(0)
 geofs.addonAircraft = {}
-geofs.addonAircraft.isMig21 = 0
+geofs.addonAircraft.isMiG21 = 0
 function fixAircraft() {
 //Fixing the XB-70's canards
 if (geofs.aircraft.instance.id == 2948) {
