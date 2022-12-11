@@ -157,6 +157,11 @@ geofs.aircraft.instance.definition.parts[28].area = 7;
 geofs.aircraft.instance.definition.parts[29].area = 7;
 geofs.aircraft.instance.definition.parts[30].area = 1;
 geofs.aircraft.instance.definition.parts[31].area = 1;
+if (geofs.animation.values.kias >= 200 && geofs.animation.values.accZ >= 50) {
+   controls.setters.setFlapsDown()
+} else if (geofs.animation.values.kias >= 200 && geofs.animation.values.accZ <= 50) {
+   controls.setters.setFlapsUp()
+}
    if (geofs.animation.values.mach >= 1.5) {
 geofs.aircraft.instance.engines[0].thrust = 150000;
 geofs.aircraft.instance.engines[0].afterBurnerThrust = 200000;
