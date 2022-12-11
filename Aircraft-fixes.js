@@ -2,7 +2,7 @@ function realismify() {
 var notifiedTrue1 = new Boolean(0)
 geofs.addonAircraft = {}
 geofs.addonAircraft.isMiG21 = 0
-function fixAircraft() {
+fixAircraft = function () {
 //Fixing the XB-70's canards
 if (geofs.aircraft.instance.id == 2948) {
 geofs.aircraft.instance.definition.parts[69].animations[0].ratio = 25
@@ -153,8 +153,10 @@ geofs.aircraft.instance.definition.parts[8].area = 25;
 geofs.aircraft.instance.definition.parts[8].stallIncidence = 17;
 geofs.aircraft.instance.definition.parts[10].area = 25;
 geofs.aircraft.instance.definition.parts[10].stallIncidence = 17;
-geofs.aircraft.instance.definition.parts[28].area = 17;
-geofs.aircraft.instance.definition.parts[29].area = 17;
+geofs.aircraft.instance.definition.parts[28].area = 7;
+geofs.aircraft.instance.definition.parts[29].area = 7;
+geofs.aircraft.instance.definition.parts[30].area = 1;
+geofs.aircraft.instance.definition.parts[31].area = 1;
    if (geofs.animation.values.mach >= 1.5) {
 geofs.aircraft.instance.engines[0].thrust = 150000;
 geofs.aircraft.instance.engines[0].afterBurnerThrust = 200000;
