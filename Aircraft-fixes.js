@@ -149,18 +149,21 @@ if (geofs.aircraft.instance.id == 2988) {
 //Fixing the realism of the F-15
 if (geofs.aircraft.instance.id == 3591) {
 geofs.aircraft.instance.definition.autopilot.maxBankAngle = 45;
-geofs.aircraft.instance.definition.parts[8].area = 25;
+geofs.aircraft.instance.definition.parts[8].area = 15;
 geofs.aircraft.instance.definition.parts[8].stallIncidence = 17;
-geofs.aircraft.instance.definition.parts[10].area = 25;
+geofs.aircraft.instance.definition.parts[10].area = 15;
 geofs.aircraft.instance.definition.parts[10].stallIncidence = 17;
 geofs.aircraft.instance.definition.parts[28].area = 7;
 geofs.aircraft.instance.definition.parts[29].area = 7;
-geofs.aircraft.instance.definition.parts[30].area = 1;
-geofs.aircraft.instance.definition.parts[31].area = 1;
+geofs.aircraft.instance.definition.parts[30].area = 0.1;
+geofs.aircraft.instance.definition.parts[31].area = 0.1;
 if (geofs.animation.values.kias >= 200 && geofs.animation.values.accZ >= 50) {
-   controls.setters.setFlapsDown.set()
+   //controls.setters.setFlapsDown.set()
+   geofs.aircraft.instance.definition.dragFactor = 6
+
 } else if (geofs.animation.values.kias >= 200 && geofs.animation.values.accZ <= 50) {
-   controls.setters.setFlapsUp.set()
+   //controls.setters.setFlapsUp.set()
+   geofs.aircraft.instance.definition.dragFactor = 0.85
 }
    if (geofs.animation.values.mach >= 1.5) {
 geofs.aircraft.instance.engines[0].thrust = 150000;
