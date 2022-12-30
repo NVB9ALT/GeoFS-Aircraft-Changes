@@ -153,8 +153,8 @@ geofs.aircraft.instance.definition.parts[8].area = 15;
 geofs.aircraft.instance.definition.parts[8].stallIncidence = 17;
 geofs.aircraft.instance.definition.parts[10].area = 15;
 geofs.aircraft.instance.definition.parts[10].stallIncidence = 17;
-geofs.aircraft.instance.definition.parts[28].area = 7;
-geofs.aircraft.instance.definition.parts[29].area = 7;
+geofs.aircraft.instance.definition.parts[28].area = 1.75;
+geofs.aircraft.instance.definition.parts[29].area = 1.75;
 geofs.aircraft.instance.definition.parts[30].area = 0.1;
 geofs.aircraft.instance.definition.parts[31].area = 0.1;
 if (geofs.animation.values.kias >= 200 && geofs.animation.values.accZ >= 50) {
