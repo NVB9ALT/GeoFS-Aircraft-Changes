@@ -8,7 +8,7 @@ if (geofs.aircraft.instance.id == 2948) {
 geofs.aircraft.instance.definition.parts[69].animations[0].ratio = 25
 geofs.aircraft.instance.definition.parts[70].animations[0].ratio = 25
 };
-//F16 automatic high-AOA slats deploy
+//F16 automatic high-AOA slats deploy and adjusted flight model
 if (geofs.aircraft.instance.id == 7 && geofs.addonAircraft.isMiG21 == 0) {
    geofs.aircraft.instance.definition.parts[13].animations[1] = {};
 	geofs.aircraft.instance.definition.parts[13].animations[1].type = "rotate";
@@ -46,6 +46,9 @@ if (geofs.aircraft.instance.id == 7 && geofs.addonAircraft.isMiG21 == 0) {
 	geofs.aircraft.instance.definition.parts[12].animations[1].rotationMethod = function(a) {
       this._rotation = M33.rotationX(this._rotation, a)
    };
+geofs.aircraft.instance.definition.parts[6].area = 0.5
+geofs.aircraft.instance.definition.parts[7].area = 2
+geofs.aircraft.instance.definition.parts[8].area = 2
 };
 //Su-35 gets thrust vectoring on the yaw axis and better physics
 if (geofs.aircraft.instance.id == 18 && geofs.aircraft.instance.liveryId != 4 && geofs.aircraft.instance.liveryId != 1){
@@ -137,11 +140,14 @@ if (geofs.aircraft.instance.id == 2844) {
 }
 //F22 fixes
 if (geofs.aircraft.instance.id == 2857) {
-geofs.aircraft.instance.definition.parts[7].area = 25
-geofs.aircraft.instance.definition.parts[8].area = 25
-geofs.aircraft.instance.definition.parts[14].liftFactor = 10
-geofs.aircraft.instance.definition.parts[15].liftFactor = 10
-geofs.aircraft.instance.definition.parts[11].area = 3
+//wings
+geofs.aircraft.instance.definition.parts[7].area = 20
+geofs.aircraft.instance.definition.parts[8].area = 20
+//elevators
+geofs.aircraft.instance.definition.parts[14].liftFactor = 7
+geofs.aircraft.instance.definition.parts[15].liftFactor = 7
+//stabilizer
+geofs.aircraft.instance.definition.parts[11].area = 0.1
 }
 if (geofs.aircraft.instance.id == 2988) {
    geofs.aircraft.instance.definition.parts[27].area = 5
