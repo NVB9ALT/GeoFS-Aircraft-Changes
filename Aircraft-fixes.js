@@ -51,7 +51,7 @@ geofs.aircraft.instance.definition.parts[7].area = 2
 geofs.aircraft.instance.definition.parts[8].area = 2
 };
 //Su-35 gets thrust vectoring on the yaw axis and better physics
-if (geofs.aircraft.instance.id == 18 && geofs.aircraft.instance.liveryId != 4 && geofs.aircraft.instance.liveryId != 1){
+if (geofs.aircraft.instance.id == 18 && geofs.aircraft.instance.liveryId != 4 && geofs.aircraft.instance.liveryId != 1 && geofs.aircraft.instance.liveryId != 6){
 geofs.aircraft.instance.definition.parts[3].area = 15
 geofs.aircraft.instance.definition.parts[4].area = 15
 geofs.aircraft.instance.definition.parts[2].area = 17
