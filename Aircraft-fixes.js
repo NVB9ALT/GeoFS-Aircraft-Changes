@@ -141,11 +141,11 @@ if (geofs.aircraft.instance.id == 2844) {
 //F22 fixes
 if (geofs.aircraft.instance.id == 2857) {
 //wings
-geofs.aircraft.instance.definition.parts[7].area = 20
-geofs.aircraft.instance.definition.parts[8].area = 20
+geofs.aircraft.instance.definition.parts[7].area = 15
+geofs.aircraft.instance.definition.parts[8].area = 15
 //elevators
-geofs.aircraft.instance.definition.parts[14].liftFactor = 7
-geofs.aircraft.instance.definition.parts[15].liftFactor = 7
+geofs.aircraft.instance.definition.parts[14].liftFactor = 3.5
+geofs.aircraft.instance.definition.parts[15].liftFactor = 3.5
 //stabilizer
 geofs.aircraft.instance.definition.parts[11].area = 0.1
 }
