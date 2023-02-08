@@ -221,6 +221,16 @@ if (geofs.aircraft.instance.id == 4251) {
 geofs.aircraft.instance.stopEngine()
 	}
 }
+if (geofs.aircraft.instance.id == 4390) {
+	geofs.aircraft.instance.definition.parts[6].animations[0].axis = "Z"
+	geofs.aircraft.instance.definition.parts[7].animations[0].axis = "Z"
+	geofs.aircraft.instance.definition.parts[6].animations[0].rotationMethod = function(a) {
+      this._rotation = M33.rotationZ(this._rotation, a)
+   };
+	geofs.aircraft.instance.definition.parts[7].animations[0].rotationMethod = function(a) {
+      this._rotation = M33.rotationZ(this._rotation, a)
+   };
+}
 }
 implementFixes = setInterval(function(){
 fixAircraft()
