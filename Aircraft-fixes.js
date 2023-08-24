@@ -47,8 +47,8 @@ if (geofs.aircraft.instance.id == 7 && geofs.addonAircraft.isMiG21 == 0) {
       this._rotation = M33.rotationX(this._rotation, a)
    };
 geofs.aircraft.instance.definition.parts[6].area = 0.069
-geofs.aircraft.instance.definition.parts[7].area = 3
-geofs.aircraft.instance.definition.parts[8].area = 3
+geofs.aircraft.instance.definition.parts[7].area = 4
+geofs.aircraft.instance.definition.parts[8].area = 4
 };
 //Su-35 gets thrust vectoring on the yaw axis and better physics
 if (geofs.aircraft.instance.id == 18 && geofs.aircraft.instance.liveryId != 4 && geofs.aircraft.instance.liveryId != 1 && geofs.aircraft.instance.liveryId != 6){
