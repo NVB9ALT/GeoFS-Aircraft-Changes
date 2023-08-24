@@ -221,6 +221,14 @@ if (geofs.aircraft.instance.id == 4251) {
 geofs.aircraft.instance.stopEngine()
 	}
 }
+//Saab 340 physics adjust
+if (geofs.aircraft.instance.id == 2892) {
+   geofs.aircraft.instance.definition.mass = 8000
+   geofs.aircraft.instance.definition.parts[30].area = 5
+   geofs.aircraft.instance.definition.parts[33].area = 5
+   geofs.aircraft.instance.definition.parts[28].area = 5
+}
+
 if (geofs.aircraft.instance.id == 4390) {
 	geofs.aircraft.instance.definition.parts[6].animations[0].axis = "Z"
 	geofs.aircraft.instance.definition.parts[7].animations[0].axis = "Z"
