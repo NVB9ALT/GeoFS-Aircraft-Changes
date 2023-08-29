@@ -150,6 +150,9 @@ geofs.aircraft.instance.definition.parts[14].liftFactor = 3.5
 geofs.aircraft.instance.definition.parts[15].liftFactor = 3.5
 //stabilizer
 geofs.aircraft.instance.definition.parts[11].area = 0.1
+//TVC adj
+geofs.aircraft.instance.definition.parts[55].animations[0].ratio = 30
+geofs.aircraft.instance.definition.parts[56].animations[0].ratio = 30
 }
 if (geofs.aircraft.instance.id == 2988) {
    geofs.aircraft.instance.definition.parts[27].area = 5
