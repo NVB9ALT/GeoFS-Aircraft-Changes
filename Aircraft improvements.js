@@ -33,11 +33,7 @@ function checkAndImplementChanges() {
 	   geofs.aircraft.instance.engine.afterBurnerThrust = 145000
       geofs.aircraft.instance.engine.thrust = 77500
    }
-	if (geofs.aircraft.instance.id == 6){
-	   //This makes sure the Twin Otter is one of the more powerful versions
-      geofs.aircraft.instance.engines[0].thrust = 6250
-		geofs.aircraft.instance.engines[1].thrust = 6250
-   }
+	
    if (geofs.aircraft.instance.id == 1){
 	   //And this turns the Piper Cub into a Super Cub
 		//Much better for the Colorado Rockies
